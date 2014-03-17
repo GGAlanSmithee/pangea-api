@@ -1,0 +1,18 @@
+# Aptana
+.project
+.settings
+
+# Composer
+vendor/
+composer.phar
+composer.lock
+
+# Node / Grunt
+node_modules/
+npm-debug.log
+.sass-cache
+
+# Phalcon
+.phalcon
+*.volt.php
+config.php
