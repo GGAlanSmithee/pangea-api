@@ -21,14 +21,26 @@ define( function(require) {
       var town = new TownModel({ id : 3 });
       town.fetch({
         success: function (town) {
-            console.log(town);
-          }
+          console.log(town);
+        }
       });
       
-      var newTown = new TownModel({ name : 'test' });
-      newTown.save({
-        success: function () {
+      var newTown = new TownModel(
+        {
+          name : 'test',
+          ruler_name : 'test ruler',
+          user_id : 6,
+          clan_id : 1,
+          race_id : 1,
+          personality_id : 1
+        }
+      );
+      newTown.save(null, {
+        success: function (newTown) {
           console.log(newTown);
+        },
+          error: function(data) {
+          console.log(data);
         }
       });
       

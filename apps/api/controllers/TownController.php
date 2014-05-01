@@ -47,13 +47,23 @@ class TownController extends ControllerBase
     
     public function createAction()
     {
-      var_dump($this->getJsonRequest());
-      //$town->save();
+      $data = $this->getJsonRequest();
+      
+      $town = new Town();
+      $town->setUserId($data->user_id);
+      $town->setClanId($data->clan_id);
+      $town->setRaceId($data->race_id);
+      $town->setPersonalityId($data->personality_id);
+      $town->setName($data->name);
+      $town->setRulerName($data->ruler_name);
+      $town->save();
+      
+      return $this->jsonResponse($town->toArray());
     }
     
     public function updateAction($id)
     {
-      return "put";
+      echo "put";
       //$town->save();
     }
     

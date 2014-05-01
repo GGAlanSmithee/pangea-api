@@ -41,7 +41,7 @@ class ControllerBase extends \Phalcon\Mvc\Controller
 
         $response = new \Phalcon\Http\Response();
         $response->setContentType("application/json", "UTF-8");
-        $response->setContent(json_encode($data, JSON_PRETTY_PRINT));
+        $response->setContent(json_encode($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
 
         return $response;
 

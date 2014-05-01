@@ -216,19 +216,18 @@ class Town extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Building", "town_id", array("alias"=>'Building'));
-		$this->hasMany("id", "Pangea\Api\Models\Event", "town_id", array("alias"=>'Event'));
-		$this->hasMany("id", "Pangea\Api\Models\Post", "town_id", array("alias"=>'Post'));
-		$this->hasMany("id", "Pangea\Api\Models\Science", "town_id", array("alias"=>'Science'));
-		$this->hasMany("id", "Pangea\Api\Models\Thread", "town_id", array("alias"=>'Thread'));
-		$this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_1_id", array("alias"=>'TownRelationship'));
-		$this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_2_id", array("alias"=>'TownRelationship'));
-		$this->hasMany("id", "Pangea\Api\Models\Unit", "town_id", array("alias"=>'Unit'));
-		$this->belongsTo("clan_id", "Pangea\Api\Models\Clan", "id", array("alias"=>'Clan'));
-		$this->belongsTo("personality_id", "Pangea\Api\Models\Personality", "id", array("alias"=>'Personality'));
-		$this->belongsTo("race_id", "Pangea\Api\Models\Race", "id", array("alias"=>'Race'));
-		$this->belongsTo("user_id", "Pangea\Api\Models\User", "id", array("alias"=>'User'));
-
+  		$this->hasMany("id", "Pangea\Api\Models\Building", "town_id", array("alias"=>'Building'));
+  		$this->hasMany("id", "Pangea\Api\Models\Event", "town_id", array("alias"=>'Event'));
+  		$this->hasMany("id", "Pangea\Api\Models\Post", "town_id", array("alias"=>'Post'));
+  		$this->hasMany("id", "Pangea\Api\Models\Science", "town_id", array("alias"=>'Science'));
+  		$this->hasMany("id", "Pangea\Api\Models\Thread", "town_id", array("alias"=>'Thread'));
+  		$this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_1_id", array("alias"=>'TownRelationship'));
+  		$this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_2_id", array("alias"=>'TownRelationship'));
+  		$this->hasMany("id", "Pangea\Api\Models\Unit", "town_id", array("alias"=>'Unit'));
+  		$this->belongsTo("clan_id", "Pangea\Api\Models\Clan", "id", array("alias"=>'Clan'));
+  		$this->belongsTo("personality_id", "Pangea\Api\Models\Personality", "id", array("alias"=>'Personality'));
+  		$this->belongsTo("race_id", "Pangea\Api\Models\Race", "id", array("alias"=>'Race'));
+  		$this->belongsTo("user_id", "Pangea\Api\Models\User", "id", array("alias"=>'User'));
     }
 
     public function getSource()
