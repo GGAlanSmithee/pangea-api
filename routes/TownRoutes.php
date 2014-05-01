@@ -2,6 +2,8 @@
 
 namespace Pangea\Api\Routes;
 
+use Pangea\Api\Models\Town;
+
 class TownRoutes extends \Phalcon\Mvc\Router\Group
 {
     public function initialize()
@@ -21,9 +23,9 @@ class TownRoutes extends \Phalcon\Mvc\Router\Group
         
         // CRUD
         $this->addGet   ('/:int', array('action' => 'details', 'id' => 1));
-        $this->addPost  ('/:int', array('action' => 'create', 'id' => 1));
-        $this->addPut   ('/:int', array('action' => 'update', 'id' => 1));
         $this->addDelete('/:int', array('action' => 'delete', 'id' => 1));
+        $this->addPut   ('/:int', array('action' => 'update', 'id' => 1));
+        $this->addPost  ('', array('action' => 'create'));
         
         // Town buildings
         $this->addGet('/:int/buildings', array(

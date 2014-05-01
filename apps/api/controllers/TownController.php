@@ -27,7 +27,7 @@ class TownController extends ControllerBase
       $response->setStatusCode(200, "OK");
       $response->setContent("Town deleted");
       
-      $town = findFirst($id);
+      $town = Town::findFirst($id);
       if (!$town)
       {
         $response->setStatusCode(204, "No Content");
@@ -45,13 +45,15 @@ class TownController extends ControllerBase
       return $response;
     }
     
-    public function createAction($id)
+    public function createAction()
     {
+      var_dump($this->getJsonRequest());
       //$town->save();
     }
     
     public function updateAction($id)
     {
+      return "put";
       //$town->save();
     }
     
