@@ -15,4 +15,4 @@ npm-debug.log
 # Phalcon
 .phalcon
 *.volt.php
-config.php
+dbconfig.php
