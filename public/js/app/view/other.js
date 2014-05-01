@@ -18,31 +18,15 @@ define( function(require) {
     render : function() {
       BaseView.prototype.render.apply(this);
       
-      var town = new TownModel({ id : 3 });
+      var town = new TownModel({ id : 21 });
       town.fetch({
         success: function (town) {
-          console.log(town);
+          town.set({ name : "this is a new name"});
+          town.save();
         }
       });
       
-      var newTown = new TownModel(
-        {
-          name : 'test',
-          ruler_name : 'test ruler',
-          user_id : 6,
-          clan_id : 1,
-          race_id : 1,
-          personality_id : 1
-        }
-      );
-      newTown.save(null, {
-        success: function (newTown) {
-          console.log(newTown);
-        },
-          error: function(data) {
-          console.log(data);
-        }
-      });
+      
       
       var html = this.template ? _.template(this.template, {}) : "Undefined template";
       
