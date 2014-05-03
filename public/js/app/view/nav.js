@@ -29,7 +29,8 @@ define( function(require) {
     
     events : {
       "click #home"    : "handleMenuClick",
-      "click #other"   : "handleMenuClick"
+      "click #other"   : "handleMenuClick",
+      "click #town"   : "handleMenuClick"
     },
     
     handleMenuClick : function(e) {

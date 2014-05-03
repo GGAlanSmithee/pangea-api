@@ -1,21 +1,23 @@
 require.config({
 
-  baseUrl: 'js/lib',
+  baseUrl: 'js/app/',
 
   paths: {
     // Base folder paths
-    app          : '../app',
-    view         : '../app/view',
-    model        : '../app/model',
-    collection   : '../app/collection',
+    view         : 'view',
+    model        : 'model',
+    collection   : 'collection',
     template     : '../../template',
     
+    // Areas
+    townArea     : 'areas/town',
+    
     // Lib paths
-    jquery       : 'jquery/jquery',
-    text         : 'require/text',
-    'bb-raw'     : 'backbone/backbone',
-    backbone     : 'backbone/backbone-module',
-    underscore   : 'underscore/underscore',
+    jquery       : '../lib/jquery/jquery',
+    text         : '../lib/require/text',
+    'bb-raw'     : '../lib/backbone/backbone',
+    backbone     : '../lib/backbone/backbone-module',
+    underscore   : '../lib/underscore/underscore',
     
     // Other
     router       : '../app/router'
@@ -38,7 +40,7 @@ require.config({
   }
 });
 
-require(["app/app", "jquery"], function(App, $) {
+require(["app", "jquery"], function(App, $) {
   
   $(function() {
     var app = new App();

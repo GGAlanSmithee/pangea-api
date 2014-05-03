@@ -4,8 +4,6 @@ define( function(require) {
   var BaseView = require('view/base');
   var Template = require('text!template/other.html');
   
-  var TownModel = require('model/town');
-  
   return BaseView.extend({
     
     el       : 'main',
@@ -17,16 +15,6 @@ define( function(require) {
     
     render : function() {
       BaseView.prototype.render.apply(this);
-      
-      var town = new TownModel({ id : 21 });
-      town.fetch({
-        success: function (town) {
-          town.set({ name : "this is a new name"});
-          town.save();
-        }
-      });
-      
-      
       
       var html = this.template ? _.template(this.template, {}) : "Undefined template";
       

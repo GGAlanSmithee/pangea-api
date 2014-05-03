@@ -6,6 +6,7 @@ define(function(require) {
   var HomeView = require('view/home');
   var NavView  = require('view/nav');
   var OtherView = require('view/other');
+  var Town      = require('townArea/town');
   
   return Backbone.Router.extend({
     routes : {
@@ -17,12 +18,14 @@ define(function(require) {
       this._homeView       = new HomeView();
       this._navView        = new NavView();
       this._otherView      = new OtherView();
+      this._town           = new Town();
     },
     
     clearOldView : function() {
         switch (this._oldContentView) {
           case 'home'  : this._homeView.clear();  break;
           case 'other' : this._otherView.clear(); break;
+          
           default      : break;
         }
     },
@@ -31,6 +34,7 @@ define(function(require) {
       switch (Backbone.history.fragment) {
         case 'home'  : this._homeView.render();  break;
         case 'other' : this._otherView.render(); break;
+        case 'town'  : this._town.run(); break;
         default      : break;
       }
     },
