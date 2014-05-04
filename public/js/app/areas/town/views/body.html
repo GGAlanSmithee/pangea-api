@@ -1,21 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td colspan="8">
-        town
-      </td>
-    </tr>
-    </tfoot>
-  <tbody>
-    <tr>
-      <td>
-        <%= town.get('name') %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <h2>Town Information</h2>
+  <dl>
+    <dt>Name</dt>
+    <dd><%= town.get('name') %></dd>
+    
+    <dt>Ruler</dt>
+    <dd><%= town.get('ruler') %></dd>
+    
+    <dt>Race</dt>
+    <dd><%= town.get('race') %></dd>
+    
+    <dt>Personality</dt>
+    <dd><%= town.get('personality') %></dd>
+    
+    <dt>Clan</dt>
+    <dd><%= town.get('clan') %></dd>
+    
+  </dl>
+  <input type="text" class="name" />
+  <button class="test">test</button>
+</div>

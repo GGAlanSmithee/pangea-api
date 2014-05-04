@@ -12,9 +12,10 @@ define( function(require) {
     initialize : function() {
     },
     
-    render : function(options) {
-      var html = _.template(this.template, { town : options.model });
-      $(options.el).html(html);
+    render : function() {
+      var html = _.template(this.template, { town : this.model });
+      this.$el.html(html);
+      
       return this;
     }
     

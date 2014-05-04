@@ -234,4 +234,17 @@ class Town extends \Phalcon\Mvc\Model
     {
         return 'town';
     }
+    
+    public function toStdClass()
+    {
+      $object = new \stdClass;
+      $object->id = $this->getId();
+      $object->name = $this->getName();
+      $object->ruler = $this->getRulerName();
+      $object->race = $this->race->getName();
+      $object->personality = $this->personality->getName();
+      $object->clan = $this->clan->getName();
+    
+      return $object;
+    }
 }

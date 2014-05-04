@@ -17,8 +17,15 @@ class TownController extends ControllerBase
 
     public function detailsAction($id)
     {
-      $result = Town::findFirst($id);
-      return $result == null ? $this->emptyJsonResponse() : $this->jsonResponse($result->toArray());
+      $town = Town::findFirst($id);
+      if ($town)
+      {
+        return $this->jsonResponse($town->toStdClass());
+      }
+      else
+      {
+        return $this->emptyJsonResponse();
+      } 
     }
     
     public function deleteAction($id)

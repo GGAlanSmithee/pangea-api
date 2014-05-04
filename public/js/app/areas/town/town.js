@@ -17,36 +17,39 @@ define( function(require) {
     el       : 'main',
     template : Template,
     
-    //Views 
-    views : {
-      body : new BodyView(),
-      header : new HeaderView()
-    },
-    
     initialize : function() {
       this.town = new TownModel({ id : 3 });
     },
     
     run : function() {
       var self = this;
-      
-      this.town.fetch({
-        success : function(town) {
-          _.each(self.views, function(view) {
-            
+      if (this.town.fetched) {
+        this.render();
+      } else {
+        this.town.fetch({
+          success : function(town) {
+            self.initSubViews(town);
             self.render();
-            self.views.header.render({ el : '#town-header', model : town });
-            self.views.body.render({ el : '#town-body', model : town });
-          });
-        }
-      });
+          }
+        });
+      }
+    },
+    
+    initSubViews : function(town) {
+      this.headerView = new HeaderView({ model : town });
+      this.bodyView = new BodyView({ model : town });
+      
+      town.fetched = true;
     },
     
     render : function() {
       var html = this.template ? _.template(this.template, {}) : "Undefined template";
       this.$el.html(html);
-      return this;      
+
+      this.headerView.setElement('#town-header').render();
+      this.bodyView.setElement('#town-body').render();
+        
+      return this;
     }
-    
   });
 });

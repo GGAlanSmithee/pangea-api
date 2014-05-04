@@ -9,12 +9,27 @@ define( function(require) {
 
     template : Template,
     
-    initialize : function() {
+    events : {
+      "click .test" : "onTestClick"
     },
     
-    render : function(options) {
-      var html = _.template(this.template, { town : options.model });
-      $(options.el).html(html);
+    initialize : function() {
+      this.listenTo(this.model, 'change', this.onModelChange);
+    },
+    
+    onTestClick : function() {
+      var a = arguments;
+      this.model.set('name', $('.name').val());
+    },
+    
+    onModelChange : function(model, options) {
+      this.render();
+    },
+    
+    render : function() {
+      var html = _.template(this.template, { town : this.model });
+      this.$el.html(html);
+      
       return this;
     }
     
