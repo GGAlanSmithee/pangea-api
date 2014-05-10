@@ -5,7 +5,8 @@ require_once "../routes/RaceRoutes.php";
 
 error_reporting(E_ALL);
 
-try {
+try
+{
 
     /**
      * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
@@ -15,16 +16,16 @@ try {
     /**
      * Registering a router
      */
-    $di->set('router', function() {
+    $di->set("router", function() {
 
         $router = new \Phalcon\Mvc\Router();
         $router->removeExtraSlashes(true);
         $router->setDefaultModule("frontend");
 
-        $router->add('/api', array(
-            'module' => 'api',
-            'controller' => 'index',
-            'action' => 'index',
+        $router->add("/api", array(
+            "module" => "api",
+            "controller" => "index",
+            "action" => "index",
         ));
 
         // Route groups
@@ -37,16 +38,16 @@ try {
     /**
      * The URL component is used to generate all kind of urls in the application
      */
-    $di->set('url', function() {
+    $di->set("url", function() {
         $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('/');
+        $url->setBaseUri("/");
         return $url;
     });
 
     /**
      * Start the session the first time some component request the session service
      */
-    $di->set('session', function() {
+    $di->set("session", function() {
         $session = new \Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
@@ -63,20 +64,24 @@ try {
      * Register application modules
      */
     $application->registerModules(array(
-        'frontend' => array(
-            'className' => 'Pangea\Frontend\Module',
-            'path' => '../apps/frontend/Module.php'
+        "frontend" => array(
+            "className" => "Pangea\\Frontend\\Module",
+            "path" => "../apps/frontend/Module.php"
         ),
-        'api' => array(
-            'className' => 'Pangea\Api\Module',
-            'path' => '../apps/api/Module.php'
+        "api" => array(
+            "className" => "Pangea\\Api\\Module",
+            "path" => "../apps/api/Module.php"
         )
     ));
 
     echo $application->handle()->getContent();
 
-} catch (Phalcon\Exception $e) {
+}
+catch (Phalcon\Exception $e)
+{
     echo $e->getMessage();
-} catch (PDOException $e){
+}
+catch (PDOException $e)
+{
     echo $e->getMessage();
 }
