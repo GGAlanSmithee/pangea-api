@@ -2,8 +2,8 @@ define( function(require) {
   
   // Required modules
   var Backbone = require('backbone');
-  var BaseView = require('view/base');
-  var Template = require('text!template/nav.html');
+  var BaseView = require('views/base');
+  var Template = require('text!templates/nav.html');
   
   return BaseView.extend({
     el       : '#main-navigation',

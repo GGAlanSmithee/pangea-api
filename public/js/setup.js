@@ -4,19 +4,20 @@ require.config({
 
   paths: {
     // Base folder paths
-    view         : 'view',
-    model        : 'model',
-    collection   : 'collection',
-    template     : '../../template',
+    views         : 'views',
+    models        : 'models',
+    collections   : 'collections',
+    templates     : '../../templates',
     
     // Areas
-    townArea     : 'areas/town',
+    councilArea   : 'areas/council',
     
     // Lib paths
     jquery       : '../lib/jquery/jquery',
     text         : '../lib/require/text',
     'bb-raw'     : '../lib/backbone/backbone',
     backbone     : '../lib/backbone/backbone-module',
+    'backbone-relational' : '../lib/backbone/backbone-relational',
     underscore   : '../lib/underscore/underscore',
     
     // Other
@@ -28,13 +29,16 @@ require.config({
       deps    : ['underscore', 'jquery'],
       exports : 'Backbone'
     },
-    'underscore' : {
+    'backbone-relational' : {
+      deps    : ['underscore', 'backbone']
+    },
+    underscore : {
       exports : '_'
     },
-    'bootstrap' : {
+    bootstrap : {
       deps    : ['jquery']
     },
-    'base' : {
+    base : {
       deps    : ['Backbone']
     }
   }

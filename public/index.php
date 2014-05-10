@@ -1,6 +1,7 @@
 <?php
 
 require_once "../routes/TownRoutes.php";
+require_once "../routes/RaceRoutes.php";
 
 error_reporting(E_ALL);
 
@@ -28,6 +29,7 @@ try {
     
     // Route groups
     $router->mount(new \Pangea\Api\Routes\TownRoutes());
+    $router->mount(new \Pangea\Api\Routes\RaceRoutes());
     
 		return $router;
 	});

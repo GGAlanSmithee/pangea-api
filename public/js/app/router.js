@@ -3,10 +3,10 @@ define(function(require) {
   // Required modules
   var Backbone = require('backbone');
   var _        = require('underscore');
-  var HomeView = require('view/home');
-  var NavView  = require('view/nav');
-  var OtherView = require('view/other');
-  var Town      = require('townArea/town');
+  var HomeView = require('views/home');
+  var NavView  = require('views/nav');
+  var OtherView = require('views/other');
+  var CouncilArea = require('councilArea/views/council');
   
   return Backbone.Router.extend({
     routes : {
@@ -18,7 +18,7 @@ define(function(require) {
       this._homeView       = new HomeView();
       this._navView        = new NavView();
       this._otherView      = new OtherView();
-      this._town           = new Town();
+      this._councilArea    = new CouncilArea();
     },
     
     clearOldView : function() {
@@ -34,7 +34,7 @@ define(function(require) {
       switch (Backbone.history.fragment) {
         case 'home'  : this._homeView.render();  break;
         case 'other' : this._otherView.render(); break;
-        case 'town'  : this._town.run(); break;
+        case 'town'  : this._councilArea.run(); break;
         default      : break;
       }
     },
