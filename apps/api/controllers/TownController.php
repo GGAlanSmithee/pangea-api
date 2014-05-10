@@ -20,13 +20,13 @@ class TownController extends ControllerBase
       $town = Town::findFirst($id);
       return $town == null ? $this->emptyJsonResponse() : $this->jsonResponse($town->toArray());
     }
-    
+
     public function deleteAction($id)
     {
       $response = new \Phalcon\Http\Response();
       $response->setStatusCode(200, "OK");
       $response->setContent("Town deleted");
-      
+
       $town = Town::findFirst($id);
       if (!$town)
       {
@@ -41,14 +41,14 @@ class TownController extends ControllerBase
           $response->setContent("Cannot delete town");
         }
       }
-      
+
       return $response;
     }
-    
+
     public function createAction()
     {
       $data = $this->getJsonRequest();
-      
+
       $town = new Town();
       $town->setUserId($data->user_id);
       $town->setClanId($data->clan_id);
@@ -57,14 +57,14 @@ class TownController extends ControllerBase
       $town->setName($data->name);
       $town->setRulerName($data->ruler_name);
       $town->save();
-      
+
       return $this->jsonResponse($town->toArray());
     }
-    
+
     public function updateAction($id)
     {
       $data = $this->getJsonRequest();
-      
+
       $town = Town::findFirst($id);
       $town->setUserId($data->user_id);
       $town->setClanId($data->clan_id);
@@ -73,10 +73,10 @@ class TownController extends ControllerBase
       $town->setName($data->name);
       $town->setRulerName($data->ruler_name);
       $town->save();
-      
+
       return $this->jsonResponse($town->toArray());
     }
-    
+
     public function buildingsAction($town_id)
     {
       return $this->jsonResponse(
@@ -88,7 +88,7 @@ class TownController extends ControllerBase
         ->toArray()
       );
     }
-    
+
     public function buildingAction($town_id, $building_type_id)
     {
       return $this->jsonResponse(
@@ -100,7 +100,7 @@ class TownController extends ControllerBase
         ->toArray()
       );
     }
-    
+
     public function unitsAction($town_id)
     {
       return $this->jsonResponse(
@@ -112,7 +112,7 @@ class TownController extends ControllerBase
         ->toArray()
       );
     }
-    
+
     public function unitAction($town_id, $unit_type_id)
     {
       return $this->jsonResponse(
@@ -124,7 +124,7 @@ class TownController extends ControllerBase
         ->toArray()
       );
     }
-    
+
     public function sciencesAction($town_id)
     {
       return $this->jsonResponse(
@@ -136,7 +136,7 @@ class TownController extends ControllerBase
         ->toArray()
       );
     }
-    
+
     public function scienceAction($town_id, $science_type_id)
     {
       return $this->jsonResponse(

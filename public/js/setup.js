@@ -8,10 +8,13 @@ require.config({
     models        : 'models',
     collections   : 'collections',
     templates     : '../../templates',
-    
+    Controller    : 'base/Controller',
+    BaseView      : 'base/View',
+    BaseModel     : 'base/model',
+
     // Areas
     councilArea   : 'areas/council',
-    
+
     // Lib paths
     jquery       : '../lib/jquery/jquery',
     text         : '../lib/require/text',
@@ -19,11 +22,11 @@ require.config({
     backbone     : '../lib/backbone/backbone-module',
     'backbone-relational' : '../lib/backbone/backbone-relational',
     underscore   : '../lib/underscore/underscore',
-    
+
     // Other
     router       : '../app/router'
   },
-  
+
   shim: {
     'bb-raw' : {
       deps    : ['underscore', 'jquery'],
@@ -45,7 +48,7 @@ require.config({
 });
 
 require(["app", "jquery"], function(App, $) {
-  
+
   $(function() {
     var app = new App();
     app.run();
