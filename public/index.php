@@ -1,7 +1,6 @@
 <?php
 
-require_once "../routes/TownRoutes.php";
-require_once "../routes/RaceRoutes.php";
+require_once "../routes/RoutesLoader.php";
 
 error_reporting(E_ALL);
 
