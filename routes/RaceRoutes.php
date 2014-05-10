@@ -20,7 +20,7 @@ class RaceRoutes extends \Phalcon\Mvc\Router\Group
 
         // Routes
         $this->add('', array('action' => 'index'));
-        
+
         // CRUD
         $this->addGet   ('/:int', array('action' => 'details', 'id' => 1));
         //$this->addDelete('/:int', array('action' => 'delete', 'id' => 1));

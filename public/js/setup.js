@@ -1,56 +1,53 @@
 require.config({
 
-  baseUrl: 'js/app/',
+    baseUrl: 'js/app/',
 
-  paths: {
-    // Base folder paths
-    views         : 'views',
-    models        : 'models',
-    collections   : 'collections',
-    templates     : '../../templates',
-    Controller    : 'base/Controller',
-    BaseView      : 'base/View',
-    BaseModel     : 'base/model',
+    paths: {
+        // Base folder paths
+        Views         : 'views',
+        Models        : 'models',
+        Collections   : 'collections',
+        Templates     : '../../templates',
 
-    // Areas
-    councilArea   : 'areas/council',
+        // Base enteties
+        Controller    : 'bases/Controller',
+        BaseView      : 'bases/View',
+        BaseModel     : 'bases/Model',
 
-    // Lib paths
-    jquery       : '../lib/jquery/jquery',
-    text         : '../lib/require/text',
-    'bb-raw'     : '../lib/backbone/backbone',
-    backbone     : '../lib/backbone/backbone-module',
-    'backbone-relational' : '../lib/backbone/backbone-relational',
-    underscore   : '../lib/underscore/underscore',
+        // Libs
+        jquery       : '../lib/jquery/jquery',
+        Underscore   : '../lib/underscore/Underscore',
+        'BB-raw'     : '../lib/backbone/Backbone',
+        Backbone     : '../lib/backbone/BackboneModule',
+        'Text'       : '../lib/require/Text',
 
-    // Other
-    router       : '../app/router'
-  },
-
-  shim: {
-    'bb-raw' : {
-      deps    : ['underscore', 'jquery'],
-      exports : 'Backbone'
+        // Other
+        Router       : '../app/Router'
     },
-    'backbone-relational' : {
-      deps    : ['underscore', 'backbone']
-    },
-    underscore : {
-      exports : '_'
-    },
-    bootstrap : {
-      deps    : ['jquery']
-    },
-    base : {
-      deps    : ['Backbone']
+
+    shim: {
+        'BB-raw' : {
+            deps : ['Underscore', 'jquery'],
+            exports : 'Backbone'
+        },
+        jquery : {
+            exports : '$'
+        },
+        Underscore : {
+            exports : '_'
+        },
+        Bootstrap : {
+            deps : ['jquery']
+        },
+        Base : {
+            deps : ['Backbone']
+        }
     }
-  }
 });
 
-require(["app", "jquery"], function(App, $) {
-
-  $(function() {
-    var app = new App();
-    app.run();
-  });
+require(["App", "jquery"], function(App, $) {
+    $(function() {
+        var app = new App();
+        app.run();
+    });
 });

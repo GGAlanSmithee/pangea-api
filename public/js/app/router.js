@@ -1,53 +1,53 @@
 define(function(require) {
 
-  // Required modules
-  var Backbone = require('backbone');
-  var _        = require('underscore');
-  var HomeView = require('views/home');
-  var NavView  = require('views/nav');
-  var OtherView = require('views/other');
-  var CouncilArea = require('councilArea/council');
+    // Required modules
+    var Backbone = require('Backbone');
+    var _        = require('Underscore');
 
-  return Backbone.Router.extend({
-    routes : {
-      '*default' : 'goTo'
-    },
+    // Views
+    var NavView  = require('views/Nav');
 
-    initialize : function() {
-      this._oldContentView = undefined;
-      this._homeView       = new HomeView();
-      this._navView        = new NavView();
-      this._otherView      = new OtherView();
-      this._councilArea    = new CouncilArea();
-    },
+    // Controllers
+    var AccountArea = require('areas/account/Account');
+    var CouncilArea = require('areas/council/Council');
 
-    clearOldView : function() {
-        switch (this._oldContentView) {
-          case 'home'  : this._homeView.clear();  break;
-          case 'other' : this._otherView.clear(); break;
+    return Backbone.Router.extend({
+        routes : {
+          '*default' : 'goTo'
+        },
 
-          default      : break;
+        initialize : function() {
+            this._oldContentView = undefined;
+            this._navView        = new NavView();
+            this._accountArea    = new AccountArea();
+            this._councilArea    = new CouncilArea();
+        },
+
+        clearOldView : function() {
+            switch (this._oldContentView) {
+                case 'account' : this._accountArea.cleanUp(); break;
+                case 'council' : this._councilArea.cleanUp(); break;
+                default : break;
+            }
+        },
+
+        renderNewView : function() {
+            switch (Backbone.history.fragment) {
+                case 'account' : this._accountArea.run(); break;
+                case 'council' : this._councilArea.run(); break;
+                default      : break;
+            }
+        },
+
+        goTo: function() {
+            if (this._oldContentView != Backbone.history.fragment) {
+                this._navView.render();
+
+                this.clearOldView();
+                this.renderNewView();
+
+                this._oldContentView = Backbone.history.fragment;
+            }
         }
-    },
-
-    renderNewView : function() {
-      switch (Backbone.history.fragment) {
-        case 'home'  : this._homeView.render();  break;
-        case 'other' : this._otherView.render(); break;
-        case 'town'  : this._councilArea.run(); break;
-        default      : break;
-      }
-    },
-
-    goTo: function() {
-      if (this._oldContentView != Backbone.history.fragment) {
-        this._navView.render();
-
-        this.clearOldView();
-        this.renderNewView();
-
-        this._oldContentView = Backbone.history.fragment;
-      }
-    }
-  });
+    });
 });

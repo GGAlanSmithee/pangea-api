@@ -1,21 +1,14 @@
 define( function(require) {
 
-  // Required modules
-  var BaseView = require('BaseView');
+    // Required modules
+    var BaseView = require('BaseView');
 
-  var Template = require('text!councilArea/templates/Town.html');
+    var Template = require('Text!areas/council/templates/Town.html');
+    var Town = require('models/Town');
 
-  var Town = require('models/Town');
-
-  return BaseView.extend({
-
-    template : Template,
-    selector : '#town-section',
-    model    : new Town({ id : 3 }),
-
-    initialize : function() {
-        // empty
-    },
-
-  });
+    return BaseView.extend({
+        template : Template,
+        selector : '#town-section',
+        model    : new Town({ id : 3 })
+    });
 });

@@ -1,28 +1,22 @@
 define( function(require) {
 
-  // Required modules
-  var Controller = require('Controller');
-  var _        = require('underscore');
-  var Template = require('text!councilArea/templates/Council.html');
+    // Required modules
+    var Controller = require('Controller');
+    var Template = require('Text!areas/council/templates/Council.html');
 
-  // Views
-  var TownView = require('councilArea/views/Town');
-  var RaceView = require('councilArea/views/Race');
+    // Views
+    var TownView = require('areas/council/views/Town');
+    var RaceView = require('areas/council/views/Race');
 
-  return Controller.extend({
+    return Controller.extend({
 
-    template : Template,
+        template : Template,
 
-    initialize : function() {
-      Controller.prototype.initialize.call(this);
+        initialize : function() {
+            Controller.prototype.initialize.call(this);
 
-      this.AddView(new TownView());
-      this.AddView(new RaceView());
-    },
-
-    run : function() {
-        Controller.prototype.run.call(this);
-    }
-
-  });
+            this.AddView(new TownView());
+            this.AddView(new RaceView());
+        }
+    });
 });
