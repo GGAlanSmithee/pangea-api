@@ -35,16 +35,16 @@ class Module
         });
 
         /**
-    	 * Setting up the view component
-    	 */
-    	$di->set("view", function() use ($config) {
-    		$view = new \Phalcon\Mvc\View();
-    		$view->setViewsDir($config->application->viewsDir);
+         * Setting up the view component
+         */
+        $di->set("view", function() use ($config) {
+            $view = new \Phalcon\Mvc\View();
+            $view->setViewsDir($config->application->viewsDir);
             $view->registerEngines(array(
                 ".volt" => "Phalcon\Mvc\View\Engine\Volt"
             ));
-    		return $view;
-    	});
+            return $view;
+        });
 
         /**
          * Database connection is created based in the parameters defined in the configuration file

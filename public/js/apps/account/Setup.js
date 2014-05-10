@@ -1,6 +1,6 @@
 require.config({
 
-    baseUrl: "js/app/",
+    baseUrl: "js/apps/account/",
 
     paths: {
         // Base folder paths
@@ -10,19 +10,16 @@ require.config({
         Templates     : "../../templates",
 
         // Base enteties
-        Controller    : "bases/Controller",
-        BaseView      : "bases/View",
-        BaseModel     : "bases/Model",
+        Controller    : "../shared/Controller",
+        BaseView      : "../shared/View",
+        BaseModel     : "../shared/Model",
 
         // Libs
-        JQuery       : "../lib/jquery/JQuery",
-        Underscore   : "../lib/underscore/Underscore",
-        "BB-raw"     : "../lib/backbone/Backbone",
-        Backbone     : "../lib/backbone/BackboneModule",
-        "Text"       : "../lib/require/Text",
-
-        // Other
-        Router       : "../app/Router"
+        JQuery       : "../../lib/jquery/JQuery",
+        Underscore   : "../../lib/underscore/Underscore",
+        "BB-raw"     : "../../lib/backbone/Backbone",
+        Backbone     : "../../lib/backbone/BackboneModule",
+        "Text"       : "../../lib/require/Text"
     },
 
     shim: {

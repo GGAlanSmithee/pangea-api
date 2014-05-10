@@ -4,12 +4,8 @@ define(function(require) {
     var Backbone = require('Backbone');
     var _        = require('Underscore');
 
-    // Views
-    var NavView  = require('views/Nav');
-
     // Controllers
     var AccountArea = require('areas/account/Account');
-    var CouncilArea = require('areas/council/Council');
 
     return Backbone.Router.extend({
         routes : {
@@ -18,30 +14,25 @@ define(function(require) {
 
         initialize : function() {
             this._oldContentView = undefined;
-            this._navView        = new NavView();
-            this._accountArea    = new AccountArea();
-            this._councilArea    = new CouncilArea();
+            this._accountArea = new AccountArea();
         },
 
         clearOldView : function() {
             switch (this._oldContentView) {
                 case 'account' : this._accountArea.cleanUp(); break;
-                case 'council' : this._councilArea.cleanUp(); break;
-                default : break;
+                default : this._accountArea.cleanUp(); break;
             }
         },
 
         renderNewView : function() {
             switch (Backbone.history.fragment) {
                 case 'account' : this._accountArea.run(); break;
-                case 'council' : this._councilArea.run(); break;
-                default      : break;
+                default : this._accountArea.run(); break;
             }
         },
 
         goTo: function() {
             if (this._oldContentView != Backbone.history.fragment) {
-                this._navView.render();
 
                 this.clearOldView();
                 this.renderNewView();

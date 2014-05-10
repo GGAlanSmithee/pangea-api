@@ -47,10 +47,14 @@ define( function(require) {
         },
 
         initViews : function() {
-            _.each(this._views, function(view) {
-                this.listenTo(view, 'ready', this.onViewReady);
-                view.fetchModel();
-            }, this);
+            if (this._views.length === 0) {
+                this.render();
+            } else {
+                _.each(this._views, function(view) {
+                    this.listenTo(view, 'ready', this.onViewReady);
+                    view.fetchModel();
+                }, this);
+            }
         },
 
         renderViews: function() {
