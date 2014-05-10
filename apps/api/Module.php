@@ -27,9 +27,12 @@ class Module
         /**
          * Setting up the view component
          */
-        $di->set("view", function() {
+        $di->set("view", function() use ($config) {
             $view = new \Phalcon\Mvc\View();
-            $view->setViewsDir(__DIR__."/views/");
+            $view->setViewsDir($config->application->viewsDir);
+            $view->registerEngines(array(
+                ".volt" => "Phalcon\Mvc\View\Engine\Volt"
+            ));
             return $view;
         });
 
