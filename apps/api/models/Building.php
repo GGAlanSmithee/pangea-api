@@ -10,31 +10,31 @@ class Building extends SprocModel
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var integer
      */
     protected $building_type_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $town_id;
-     
+
     /**
      *
      * @var string
      */
     protected $create_time;
-     
+
     /**
      *
      * @var integer
      */
     protected $construction_time;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -155,26 +155,25 @@ class Building extends SprocModel
      */
     public function initialize()
     {
-		$this->belongsTo("building_type_id", "Pangea\Api\Models\BuildingType", "id", array("alias"=>'BuildingType'));
-		$this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-
+        $this->belongsTo("building_type_id", "Pangea\Api\Models\BuildingType", "id", array("alias" => "BuildingType"));
+        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'building';
+        return "building";
     }
-    
+
     /**
      * Stored procedures
      */
     public static function get_town_buildings($town_id)
     {
-      return Building::call_sproc("CALL get_town_buildings('$town_id');");
+        return Building::call_sproc("CALL get_town_buildings('$town_id');");
     }
-    
+
     public static function get_town_building($town_id, $building_type_id)
     {
-      return Building::call_sproc("CALL get_town_building('$town_id', '$building_type_id');");
+        return Building::call_sproc("CALL get_town_building('$town_id', '$building_type_id');");
     }
 }

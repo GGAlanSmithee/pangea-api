@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Event extends \Phalcon\Mvc\Model
 {
 
@@ -13,31 +10,31 @@ class Event extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var integer
      */
     protected $town_id;
-     
+
     /**
      *
      * @var string
      */
     protected $text;
-     
+
     /**
      *
      * @var string
      */
     protected $create_time;
-     
+
     /**
      *
      * @var string
      */
     protected $is_read;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -158,13 +155,12 @@ class Event extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-
+        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'event';
+        return "event";
     }
 
 }

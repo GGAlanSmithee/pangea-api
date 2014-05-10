@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Thread extends \Phalcon\Mvc\Model
 {
 
@@ -13,31 +10,31 @@ class Thread extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var integer
      */
     protected $town_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $forum_id;
-     
+
     /**
      *
      * @var string
      */
     protected $title;
-     
+
     /**
      *
      * @var string
      */
     protected $create_time;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -158,15 +155,14 @@ class Thread extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Post", "thread_id", array("alias"=>'Post'));
-		$this->belongsTo("forum_id", "Pangea\Api\Models\Forum", "id", array("alias"=>'Forum'));
-		$this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Post", "thread_id", array("alias" => "Post"));
+        $this->belongsTo("forum_id", "Pangea\Api\Models\Forum", "id", array("alias" => "Forum"));
+        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'thread';
+        return "thread";
     }
 
 }

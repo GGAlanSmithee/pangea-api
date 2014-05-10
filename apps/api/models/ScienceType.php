@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class ScienceType extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class ScienceType extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,13 +68,12 @@ class ScienceType extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Science", "science_type_id", array("alias"=>'Science'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Science", "science_type_id", array("alias" => "Science"));
     }
 
     public function getSource()
     {
-        return 'science_type';
+        return "science_type";
     }
 
 }

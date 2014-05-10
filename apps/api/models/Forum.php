@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Forum extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class Forum extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var integer
      */
     protected $clan_id;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,14 +68,13 @@ class Forum extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Thread", "forum_id", array("alias"=>'Thread'));
-		$this->belongsTo("clan_id", "Pangea\Api\Models\Clan", "id", array("alias"=>'Clan'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Thread", "forum_id", array("alias" => "Thread"));
+        $this->belongsTo("clan_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
     }
 
     public function getSource()
     {
-        return 'forum';
+        return "forum";
     }
 
 }

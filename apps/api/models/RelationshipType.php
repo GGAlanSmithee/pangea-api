@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class RelationshipType extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class RelationshipType extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,14 +68,14 @@ class RelationshipType extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "relationship_type_id", array("alias"=>'ClanRelationship'));
-		$this->hasMany("id", "Pangea\Api\Models\TownRelationship", "relationship_type_id", array("alias"=>'TownRelationship'));
+        $this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "relationship_type_id", array("alias" => "ClanRelationship"));
+        $this->hasMany("id", "Pangea\Api\Models\TownRelationship", "relationship_type_id", array("alias" => "TownRelationship"));
 
     }
 
     public function getSource()
     {
-        return 'relationship_type';
+        return "relationship_type";
     }
 
 }

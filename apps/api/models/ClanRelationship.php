@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class ClanRelationship extends \Phalcon\Mvc\Model
 {
 
@@ -13,25 +10,25 @@ class ClanRelationship extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $clan_1_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $clan_2_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $relationship_type_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $percent;
-     
+
     /**
      * Method to set the value of field clan_1_id
      *
@@ -129,15 +126,14 @@ class ClanRelationship extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->belongsTo("clan_1_id", "Pangea\Api\Models\Clan", "id", array("alias"=>'Clan'));
-		$this->belongsTo("clan_2_id", "Pangea\Api\Models\Clan", "id", array("alias"=>'Clan'));
-		$this->belongsTo("relationship_type_id", "Pangea\Api\Models\RelationshipType", "id", array("alias"=>'RelationshipType'));
-
+        $this->belongsTo("clan_1_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
+        $this->belongsTo("clan_2_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
+        $this->belongsTo("relationship_type_id", "Pangea\Api\Models\RelationshipType", "id", array("alias" => "RelationshipType"));
     }
 
     public function getSource()
     {
-        return 'clan_relationship';
+        return "clan_relationship";
     }
 
 }

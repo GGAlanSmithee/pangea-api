@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Science extends \Phalcon\Mvc\Model
 {
 
@@ -13,31 +10,31 @@ class Science extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var integer
      */
     protected $science_type_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $town_id;
-     
+
     /**
      *
      * @var string
      */
     protected $create_time;
-     
+
     /**
      *
      * @var integer
      */
     protected $construction_time;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -158,14 +155,13 @@ class Science extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->belongsTo("science_type_id", "Pangea\Api\Models\ScienceType", "id", array("alias"=>'ScienceType'));
-		$this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-
+        $this->belongsTo("science_type_id", "Pangea\Api\Models\ScienceType", "id", array("alias" => "ScienceType"));
+        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'science';
+        return "science";
     }
 
 }

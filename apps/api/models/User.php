@@ -2,7 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
 use Phalcon\Mvc\Model\Validator\Email as Email;
 
 class User extends \Phalcon\Mvc\Model
@@ -13,37 +12,37 @@ class User extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $username;
-     
+
     /**
      *
      * @var string
      */
     protected $password;
-     
+
     /**
      *
      * @var string
      */
     protected $first_name;
-     
+
     /**
      *
      * @var string
      */
     protected $last_name;
-     
+
     /**
      *
      * @var string
      */
     protected $email;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -187,7 +186,6 @@ class User extends \Phalcon\Mvc\Model
      */
     public function validation()
     {
-
         $this->validate(
             new Email(
                 array(
@@ -206,13 +204,12 @@ class User extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Town", "user_id", array("alias"=>'Town'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Town", "user_id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'user';
+        return "user";
     }
 
 }

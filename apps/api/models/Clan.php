@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Clan extends \Phalcon\Mvc\Model
 {
 
@@ -13,25 +10,25 @@ class Clan extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      *
      * @var string
      */
     protected $country;
-     
+
     /**
      *
      * @var string
      */
     protected $region;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -129,16 +126,15 @@ class Clan extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "clan_1_id", array("alias"=>'ClanRelationship'));
-		$this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "clan_2_id", array("alias"=>'ClanRelationship'));
-		$this->hasMany("id", "Pangea\Api\Models\Forum", "clan_id", array("alias"=>'Forum'));
-		$this->hasMany("id", "Pangea\Api\Models\Town", "clan_id", array("alias"=>'Town'));
-
+        $this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "clan_1_id", array("alias" => "ClanRelationship"));
+        $this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "clan_2_id", array("alias" => "ClanRelationship"));
+        $this->hasMany("id", "Pangea\Api\Models\Forum", "clan_id", array("alias" => "Forum"));
+        $this->hasMany("id", "Pangea\Api\Models\Town", "clan_id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'clan';
+        return "clan";
     }
 
 }

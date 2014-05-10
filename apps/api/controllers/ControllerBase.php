@@ -46,7 +46,7 @@ class ControllerBase extends \Phalcon\Mvc\Controller
         return $response;
 
     }
-    
+
     protected function emptyJsonResponse()
     {
       return $this->jsonResponse(array());

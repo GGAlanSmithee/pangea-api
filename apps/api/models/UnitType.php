@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class UnitType extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class UnitType extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,13 +68,12 @@ class UnitType extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Unit", "unit_type_id", array("alias"=>'Unit'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Unit", "unit_type_id", array("alias" => "Unit"));
     }
 
     public function getSource()
     {
-        return 'unit_type';
+        return "unit_type";
     }
 
 }

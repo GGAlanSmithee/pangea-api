@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class BuildingType extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class BuildingType extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,13 +68,12 @@ class BuildingType extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Building", "building_type_id", array("alias"=>'Building'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Building", "building_type_id", array("alias" => "Building"));
     }
 
     public function getSource()
     {
-        return 'building_type';
+        return "building_type";
     }
 
 }

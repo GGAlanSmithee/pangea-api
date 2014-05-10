@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class Personality extends \Phalcon\Mvc\Model
 {
 
@@ -13,13 +10,13 @@ class Personality extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
-     
+
     /**
      *
      * @var string
      */
     protected $name;
-     
+
     /**
      * Method to set the value of field id
      *
@@ -71,13 +68,12 @@ class Personality extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->hasMany("id", "Pangea\Api\Models\Town", "personality_id", array("alias"=>'Town'));
-
+        $this->hasMany("id", "Pangea\Api\Models\Town", "personality_id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'personality';
+        return "personality";
     }
 
 }

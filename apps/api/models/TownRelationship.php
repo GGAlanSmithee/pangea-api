@@ -2,9 +2,6 @@
 
 namespace Pangea\Api\Models;
 
-
-
-
 class TownRelationship extends \Phalcon\Mvc\Model
 {
 
@@ -13,25 +10,25 @@ class TownRelationship extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $town_1_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $town_2_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $relationship_type_id;
-     
+
     /**
      *
      * @var integer
      */
     protected $percent;
-     
+
     /**
      * Method to set the value of field town_1_id
      *
@@ -129,15 +126,14 @@ class TownRelationship extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-		$this->belongsTo("relationship_type_id", "Pangea\Api\Models\RelationshipType", "id", array("alias"=>'RelationshipType'));
-		$this->belongsTo("town_1_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-		$this->belongsTo("town_2_id", "Pangea\Api\Models\Town", "id", array("alias"=>'Town'));
-
+        $this->belongsTo("relationship_type_id", "Pangea\Api\Models\RelationshipType", "id", array("alias"=>"RelationshipType"));
+        $this->belongsTo("town_1_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
+        $this->belongsTo("town_2_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()
     {
-        return 'town_relationship';
+        return "town_relationship";
     }
 
 }
