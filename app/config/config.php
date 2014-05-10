@@ -2,13 +2,13 @@
 
 $config = new \Phalcon\Config(array(
     "application" => array(
-        "controllersDir" => __DIR__ . "/../../apps/api/controllers/",
-        "modelsDir"      => __DIR__ . "/../../apps/api/models/",
+        "controllersDir" => "apps/api/controllers/",
+        "modelsDir"      => "apps/api/models/",
         "baseUri"        => "/"
     )
 ));
 
-$dbConfig = include(__DIR__."/dbconfig.php");
+$dbConfig = include __DIR__."/dbconfig.php";
 $config->merge($dbConfig);
 
 return $config;

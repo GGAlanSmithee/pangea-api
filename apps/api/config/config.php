@@ -13,6 +13,7 @@ $config = new \Phalcon\Config(array(
     )
 ));
 
-$dbConfig = include(__DIR__."/dbconfig.php");
+$dbConfig = include __DIR__."/dbconfig.php";
 $config->merge($dbConfig);
+
 return $config;

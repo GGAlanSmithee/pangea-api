@@ -1,8 +1,9 @@
 <?php
 
-require_once "../routes/RoutesLoader.php";
-
+chdir(dirname(__DIR__));
 error_reporting(E_ALL);
+
+require_once "routes/RoutesLoader.php";
 
 try
 {
@@ -65,11 +66,11 @@ try
     $application->registerModules(array(
         "frontend" => array(
             "className" => "Pangea\\Frontend\\Module",
-            "path" => "../apps/frontend/Module.php"
+            "path" => "apps/frontend/Module.php"
         ),
         "api" => array(
             "className" => "Pangea\\Api\\Module",
-            "path" => "../apps/api/Module.php"
+            "path" => "apps/api/Module.php"
         )
     ));
 
