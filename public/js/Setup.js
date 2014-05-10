@@ -1,51 +1,51 @@
 require.config({
 
-    baseUrl: 'js/app/',
+    baseUrl: "js/app/",
 
     paths: {
         // Base folder paths
-        Views         : 'views',
-        Models        : 'models',
-        Collections   : 'collections',
-        Templates     : '../../templates',
+        Views         : "views",
+        Models        : "models",
+        Collections   : "collections",
+        Templates     : "../../templates",
 
         // Base enteties
-        Controller    : 'bases/Controller',
-        BaseView      : 'bases/View',
-        BaseModel     : 'bases/Model',
+        Controller    : "bases/Controller",
+        BaseView      : "bases/View",
+        BaseModel     : "bases/Model",
 
         // Libs
-        jquery       : '../lib/jquery/jquery',
-        Underscore   : '../lib/underscore/Underscore',
-        'BB-raw'     : '../lib/backbone/Backbone',
-        Backbone     : '../lib/backbone/BackboneModule',
-        'Text'       : '../lib/require/Text',
+        JQuery       : "../lib/jquery/JQuery",
+        Underscore   : "../lib/underscore/Underscore",
+        "BB-raw"     : "../lib/backbone/Backbone",
+        Backbone     : "../lib/backbone/BackboneModule",
+        "Text"       : "../lib/require/Text",
 
         // Other
-        Router       : '../app/Router'
+        Router       : "../app/Router"
     },
 
     shim: {
-        'BB-raw' : {
-            deps : ['Underscore', 'jquery'],
-            exports : 'Backbone'
+        "BB-raw" : {
+            deps : ["Underscore", "JQuery"],
+            exports : "Backbone"
         },
-        jquery : {
-            exports : '$'
+        JQuery : {
+            exports : "$"
         },
         Underscore : {
-            exports : '_'
+            exports : "_"
         },
         Bootstrap : {
-            deps : ['jquery']
+            deps : ["JQuery"]
         },
         Base : {
-            deps : ['Backbone']
+            deps : ["Backbone"]
         }
     }
 });
 
-require(["App", "jquery"], function(App, $) {
+require(["App", "JQuery"], function(App, $) {
     $(function() {
         var app = new App();
         app.run();
