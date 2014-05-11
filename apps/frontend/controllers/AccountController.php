@@ -4,6 +4,11 @@ namespace Pangea\Frontend\Controllers;
 
 class AccountController extends ControllerBase
 {
+    public function indexAction()
+    {
+        // Serves startpage
+    }
+
     /**
      * Register a session to mark user as logged in
      *

@@ -8,7 +8,7 @@ define( function(require) {
 
     return BaseView.extend({
         template : Template,
-        selector : '#town-section',
+        selector : 'section#town',
         model    : new Town({ id : 3 })
     });
 });

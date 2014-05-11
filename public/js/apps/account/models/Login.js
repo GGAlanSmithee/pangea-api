@@ -4,10 +4,9 @@ define( function(require) {
     var BaseModel = require('BaseModel');
 
     return BaseModel.extend({
-        urlRoot: '/api/towns',
+        urlRoot: '/account/login',
 
         initialize : function() {
-            this.fetchModel();
         }
     });
 });
