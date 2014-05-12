@@ -7,7 +7,7 @@ require.config({
         Views         : "views",
         Models        : "models",
         Collections   : "collections",
-        Templates     : "../../templates",
+        Templates     : "templates",
 
         // Base enteties
         Controller    : "../shared/Controller",

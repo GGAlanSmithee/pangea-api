@@ -8,7 +8,7 @@ define( function(require) {
 
     return BaseView.extend({
         template : Template,
-        selector : 'section#login',
+        selector : 'section#content',
         model    : new Login(),
 
         events: {

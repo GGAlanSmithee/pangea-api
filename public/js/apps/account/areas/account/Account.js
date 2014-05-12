@@ -6,6 +6,7 @@ define( function(require) {
 
     // Views
     var LoginView = require('areas/account/views/Login');
+    var RegistrationView = require('areas/account/views/Registration');
 
     return Controller.extend({
 
@@ -13,12 +14,20 @@ define( function(require) {
 
         initialize : function() {
             Controller.prototype.initialize.call(this);
-
-            this.AddView(new LoginView());
         },
 
         run : function() {
             this.render();
+        },
+
+        loginAction : function() {
+            this.AddView(new LoginView());
+            this.run();
+        },
+
+        registrationAction : function() {
+            this.AddView(new RegistrationView());
+            this.run();
         }
     });
 });

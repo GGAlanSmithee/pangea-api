@@ -31,6 +31,13 @@ define( function(require) {
         },
 
         cleanUp : function() {
+            _.each(this._views, function(view) {
+                view.cleanUp();
+            });
+
+            // Clear array, delete all elements in it
+            this._views.length = 0;
+
             this.undelegateEvents();
             this.$el.removeData().unbind();
             this.$el.empty();

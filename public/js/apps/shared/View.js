@@ -14,8 +14,15 @@ define( function(require) {
         },
 
         render : function() {
+            this.delegateEvents();
             this.$el.html(_.template(this.template, { model : this.model }));
             return this.el;
-        }
+        },
+
+        cleanUp : function() {
+            this.undelegateEvents();
+            this.$el.removeData().unbind();
+            this.$el.empty();
+        },
     });
 });

@@ -5,7 +5,7 @@ define(function(require) {
     var _        = require('Underscore');
 
     // Views
-    var NavView  = require('views/Nav');
+    var MainNavigationView  = require('views/MainNavigation');
 
     // Controllers
     var CouncilArea = require('areas/council/Council');
@@ -17,14 +17,13 @@ define(function(require) {
 
         initialize : function() {
             this._oldContentView = undefined;
-            this._navView        = new NavView();
-            this._councilArea    = new CouncilArea();
+            this._mainNavigationView = new MainNavigationView();
+            this._councilArea = new CouncilArea();
         },
 
         clearOldView : function() {
             switch (this._oldContentView) {
                 case 'council' : this._councilArea.cleanUp(); break;
-                default : break;
             }
         },
 
@@ -37,7 +36,7 @@ define(function(require) {
 
         goTo: function() {
             if (this._oldContentView != Backbone.history.fragment) {
-                this._navView.render();
+                this._mainNavigationView.render();
 
                 this.clearOldView();
                 this.renderNewView();

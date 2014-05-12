@@ -4,6 +4,9 @@ define(function(require) {
     var Backbone = require('Backbone');
     var _        = require('Underscore');
 
+    // Views
+    var MainNavigationView  = require('views/MainNavigation');
+
     // Controllers
     var AccountArea = require('areas/account/Account');
 
@@ -14,25 +17,27 @@ define(function(require) {
 
         initialize : function() {
             this._oldContentView = undefined;
+            this._mainNavigationView = new MainNavigationView();
             this._accountArea = new AccountArea();
         },
 
         clearOldView : function() {
             switch (this._oldContentView) {
-                case 'account' : this._accountArea.cleanUp(); break;
-                default : this._accountArea.cleanUp(); break;
+                case 'login' : this._accountArea.cleanUp(); break;
+                case 'register' : this._accountArea.cleanUp(); break;
             }
         },
 
         renderNewView : function() {
             switch (Backbone.history.fragment) {
-                case 'account' : this._accountArea.run(); break;
-                default : this._accountArea.run(); break;
+                case 'login' : this._accountArea.loginAction(); break;
+                case 'register' : this._accountArea.registrationAction(); break;
             }
         },
 
         goTo: function() {
             if (this._oldContentView != Backbone.history.fragment) {
+                this._mainNavigationView.render();
 
                 this.clearOldView();
                 this.renderNewView();
