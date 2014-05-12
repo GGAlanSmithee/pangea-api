@@ -50,7 +50,7 @@ class AccountController extends ControllerBase
             }
 
             // Notify about wrong username/password
-            $obj->error = "Wrong username/password";
+            $obj->error = "Wrong username or password.";
         }
 
         return $this->jsonResponse($obj);
@@ -126,19 +126,24 @@ class AccountController extends ControllerBase
      */
     public function registerAction()
     {
+        $obj = new \stdClass();
+        $obj->success = false;
+
         if ($this->request->isPost()) {
-            $username = $this->request->getPost("username");
-            $password = $this->request->getPost("password");
-            $firstName = $this->request->getPost("first_name");
-            $lastName = $this->request->getPost("last_name");
-            $email = $this->request->getPost("email");
+            $data = $this->getJsonRequest();
+
+            $username = $data->username;
+            $password = $data->password;
+            $firstName = $data->first_name;
+            $lastName = $data->last_name;
+            $email = $data->email;
 
             $user = User::findByFirstUsername($username);
 
             if ($user)
             {
                 // Notify that the username is taken
-                $this->flash->error("Username is taken");
+                $obj->error = "The username is already in use.";
             }
             else
             {
@@ -149,9 +154,11 @@ class AccountController extends ControllerBase
                 $user->setLastName($lastName);
                 $user->setEmail($email);
                 $user->save();
-            }
 
-            $this->forward("index/index");
+                $obj->success = true;
+            }
         }
+
+        return $this->jsonResponse($obj);
     }
 }
