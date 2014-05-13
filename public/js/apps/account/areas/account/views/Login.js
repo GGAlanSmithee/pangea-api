@@ -12,12 +12,17 @@ define( function(require) {
         model    : new Login(),
 
         events: {
-            "click #login-submit": "onLoginSubmit"
+            "submit form" : "onFormSubmit",
+            "blur input" : "onInputBlur"
         },
 
-        onLoginSubmit : function() {
-            model.set('username', $('#username').val());
-            model.set('password', $('#password').val());
+        onFormSubmit : function(e) {
+            e.preventDefault();
+        },
+
+        onInputBlur : function(e, that) {
+            e.preventDefault();
+            $(e.target).addClass('dirty');
         }
     });
 });

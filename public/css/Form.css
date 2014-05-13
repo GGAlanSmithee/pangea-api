@@ -1,0 +1,17 @@
+input.dirty:invalid {
+  background-color:#F66;
+  border:2px solid #F66;
+}
+
+input.dirty:invalid::-webkit-input-placeholder {
+    color:#000;
+}
+input.dirty:invalid:-moz-placeholder {
+    color:#000;
+}
+input.dirty:invalid::-moz-placeholder {
+    color:#000;
+}
+input.dirty:invalid:-ms-input-placeholder {
+    color:#000;
+}
