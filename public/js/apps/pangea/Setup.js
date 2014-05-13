@@ -13,6 +13,7 @@ require.config({
         Controller    : "../shared/Controller",
         BaseView      : "../shared/View",
         BaseModel     : "../shared/Model",
+        BaseRouter    : "../shared/Router",
 
         // Libs
         JQuery       : "../../lib/jquery/JQuery",

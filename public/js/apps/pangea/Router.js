@@ -1,8 +1,7 @@
 define(function(require) {
 
     // Required modules
-    var Backbone = require('Backbone');
-    var _        = require('Underscore');
+    var BaseRouter = require('BaseRouter');
 
     // Views
     var MainNavigationView  = require('views/MainNavigation');
@@ -10,39 +9,19 @@ define(function(require) {
     // Controllers
     var CouncilArea = require('areas/council/Council');
 
-    return Backbone.Router.extend({
-        routes : {
-          '*default' : 'goTo'
-        },
-
+    return BaseRouter.extend({
         initialize : function() {
-            this._oldContentView = undefined;
+            BaseRouter.prototype.initialize.call(this);
+
             this._mainNavigationView = new MainNavigationView();
             this._councilArea = new CouncilArea();
-        },
 
-        clearOldView : function() {
-            switch (this._oldContentView) {
-                case 'council' : this._councilArea.cleanUp(); break;
-            }
-        },
-
-        renderNewView : function() {
-            switch (Backbone.history.fragment) {
-                case 'council' : this._councilArea.run(); break;
-                default : break;
-            }
-        },
-
-        goTo: function() {
-            if (this._oldContentView != Backbone.history.fragment) {
-                this._mainNavigationView.render();
-
-                this.clearOldView();
-                this.renderNewView();
-
-                this._oldContentView = Backbone.history.fragment;
-            }
+            this.addRoute(
+                'council',
+                this._councilArea,
+                this._councilArea.run,
+                this._councilArea.cleanUp
+            );
         }
     });
 });

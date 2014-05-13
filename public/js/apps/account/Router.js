@@ -1,8 +1,7 @@
 define(function(require) {
 
     // Required modules
-    var Backbone = require('Backbone');
-    var _        = require('Underscore');
+    var BaseRouter = require('BaseRouter');
 
     // Views
     var MainNavigationView  = require('views/MainNavigation');
@@ -10,40 +9,26 @@ define(function(require) {
     // Controllers
     var AccountArea = require('areas/account/Account');
 
-    return Backbone.Router.extend({
-        routes : {
-          '*default' : 'goTo'
-        },
-
+    return BaseRouter.extend({
         initialize : function() {
-            this._oldContentView = undefined;
+            BaseRouter.prototype.initialize.call(this);
+
             this._mainNavigationView = new MainNavigationView();
             this._accountArea = new AccountArea();
-        },
 
-        clearOldView : function() {
-            switch (this._oldContentView) {
-                case 'login' : this._accountArea.cleanUp(); break;
-                case 'register' : this._accountArea.cleanUp(); break;
-            }
-        },
+            this.addRoute(
+                'login',
+                this._accountArea,
+                this._accountArea.loginAction,
+                this._accountArea.cleanUp
+            );
 
-        renderNewView : function() {
-            switch (Backbone.history.fragment) {
-                case 'login' : this._accountArea.loginAction(); break;
-                case 'register' : this._accountArea.registrationAction(); break;
-            }
-        },
-
-        goTo: function() {
-            if (this._oldContentView != Backbone.history.fragment) {
-                this._mainNavigationView.render();
-
-                this.clearOldView();
-                this.renderNewView();
-
-                this._oldContentView = Backbone.history.fragment;
-            }
+            this.addRoute(
+                'register',
+                this._accountArea,
+                this._accountArea.registrationAction,
+                this._accountArea.cleanUp
+            );
         }
     });
 });
