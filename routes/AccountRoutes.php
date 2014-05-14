@@ -19,7 +19,7 @@ class AccountRoutes extends \Phalcon\Mvc\Router\Group
         // Routes
         $this->addPost("/authenticate", array("action" => "authenticate"));
         $this->addPost("/authenticate_with_token",
-            array("action" => "authenticate_with_token"));
+            array("action" => "authenticateWithToken"));
         $this->addGet("/deauthenticate", array("action" => "deauthenticate"));
         $this->addPost("/register", array("action" => "register"));
     }

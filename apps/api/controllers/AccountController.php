@@ -64,7 +64,7 @@ class AccountController extends ControllerBase
      *
      * @return boolean
      */
-    public function authenticateWithToken()
+    public function authenticateWithTokenAction()
     {
         // $data = $this->getJsonRequest();
 
