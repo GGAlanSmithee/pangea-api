@@ -1,50 +1,20 @@
 require.config({
-
-    baseUrl: "js/apps/account/",
-
     paths: {
+        App           : "account/App",
+        Router        : "account/Router",
+
         // Base folder paths
-        Views         : "views",
-        Models        : "models",
-        Collections   : "collections",
-        Templates     : "templates",
-
-        // Base enteties
-        Controller    : "../shared/Controller",
-        BaseView      : "../shared/View",
-        BaseModel     : "../shared/Model",
-        BaseRouter    : "../shared/Router",
-
-        // Libs
-        JQuery       : "../../lib/jquery/JQuery",
-        Underscore   : "../../lib/underscore/Underscore",
-        "BB-raw"     : "../../lib/backbone/Backbone",
-        Backbone     : "../../lib/backbone/BackboneModule",
-        "Text"       : "../../lib/require/Text"
-    },
-
-    shim: {
-        "BB-raw" : {
-            deps : ["Underscore", "JQuery"],
-            exports : "Backbone"
-        },
-        JQuery : {
-            exports : "$"
-        },
-        Underscore : {
-            exports : "_"
-        },
-        Bootstrap : {
-            deps : ["JQuery"]
-        },
-        Base : {
-            deps : ["Backbone"]
-        }
+        areas         : "account/areas",
+        views         : "account/views",
+        models        : "account/models",
+        collections   : "account/collections",
+        templates     : "account/templates"
     }
 });
 
-require(["App", "JQuery"], function(App, $) {
-    $(function() {
+
+require(["DomReady", "App", "JQuery"], function(DomReady, App, $) {
+    DomReady(function () {
         var app = new App();
         app.run();
     });
