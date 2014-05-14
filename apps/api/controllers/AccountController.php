@@ -1,6 +1,8 @@
 <?php
 
-namespace Pangea\Frontend\Controllers;
+namespace Pangea\Api\Controllers;
+
+use Pangea\Api\Models\User;
 
 class AccountController extends ControllerBase
 {
@@ -35,7 +37,7 @@ class AccountController extends ControllerBase
             $username = $data->username;
             $password = $data->password;
 
-            $user = User::findByFirstUsername($username);
+            $user = User::findFirstByUsername($username);
 
             if ($user)
             {
@@ -135,7 +137,7 @@ class AccountController extends ControllerBase
             $lastName = $data->last_name;
             $email = $data->email;
 
-            $user = User::findByFirstUsername($username);
+            $user = User::findFirstByUsername($username);
 
             if ($user)
             {

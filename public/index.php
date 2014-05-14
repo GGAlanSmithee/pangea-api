@@ -29,6 +29,7 @@ try
         ));
 
         // Route groups
+        $router->mount(new \Pangea\Api\Routes\AccountRoutes());
         $router->mount(new \Pangea\Api\Routes\TownRoutes());
         $router->mount(new \Pangea\Api\Routes\RaceRoutes());
 
