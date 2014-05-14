@@ -27,8 +27,7 @@ class AccountController extends ControllerBase
      */
     public function authenticateAction()
     {
-        $obj = new \stdClass();
-        $obj->success = false;
+        $message = null;
 
         if ($this->request->isPost()) {
             $data = $this->getJsonRequest();
@@ -43,17 +42,15 @@ class AccountController extends ControllerBase
                 if ($this->security->checkHash($password, $user->getPassword()))
                 {
                     $this->registerSession($user);
-                    $obj->success = true;
 
-                    return $this->jsonResponse($obj);
+                    return $this->respondWithStatusCode();
                 }
             }
 
-            // Notify about wrong username/password
-            $obj->error = "Wrong username or password.";
+            $message = "Wrong username or password.";
         }
 
-        return $this->jsonResponse($obj);
+        return $this->respondWithStatusCode(401, message);
     }
 
     /**
@@ -99,7 +96,7 @@ class AccountController extends ControllerBase
         // one that shouldn't have access to that
         // account has it.
 
-        throw new \Exception("Unimplemented function!");
+        return $this->respondWithStatusCode(501, "Unimplemented function!");
     }
 
     /**
@@ -111,6 +108,8 @@ class AccountController extends ControllerBase
     public function deauthenticateAction()
     {
         $this->session->remove("auth");
+
+        return $this->respondWithStatusCode();
     }
 
     /**
@@ -126,10 +125,8 @@ class AccountController extends ControllerBase
      */
     public function registerAction()
     {
-        $obj = new \stdClass();
-        $obj->success = false;
-
-        if ($this->request->isPost()) {
+        if ($this->request->isPost())
+        {
             $data = $this->getJsonRequest();
 
             $username = $data->username;
@@ -143,7 +140,7 @@ class AccountController extends ControllerBase
             if ($user)
             {
                 // Notify that the username is taken
-                $obj->error = "The username is already in use.";
+                return $this->respondWithStatusCode(404, "The username is already in use.");
             }
             else
             {
@@ -155,10 +152,10 @@ class AccountController extends ControllerBase
                 $user->setEmail($email);
                 $user->save();
 
-                $obj->success = true;
+                return $this->respondWithStatusCode(201);
             }
         }
 
-        return $this->jsonResponse($obj);
+        return $this->respondWithStatusCode(404);
     }
 }
