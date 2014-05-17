@@ -9,7 +9,13 @@ define( function(require) {
             if (this.model.isFetched()) {
                 this.trigger('ready');
             } else {
-                this.model.fetch({ success : function( ) { self.trigger('ready'); } });
+                this.model.fetch({
+                    success : function( ) {
+                        self.trigger('ready');
+                    },
+                    error : function( ) {
+                        self.trigger('ready');
+                });
             }
         },
 

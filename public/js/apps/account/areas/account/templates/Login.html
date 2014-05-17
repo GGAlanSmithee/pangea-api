@@ -1,14 +1,14 @@
-<form>
+<form id="login">
     <fieldset>
         <legend>Login</legend>
         <div>
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" autocomplete="on" autofocus required/>
+            <input type="text" id="username" name="username" placeholder="Username" autocomplete="off" autofocus required pattern=".{5,}" />
         </div>
 
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required/>
+            <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required pattern=".{8,}" />
         </div>
 
         <div>
