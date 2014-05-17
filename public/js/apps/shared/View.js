@@ -15,6 +15,7 @@ define( function(require) {
                     },
                     error : function( ) {
                         self.trigger('ready');
+                    }
                 });
             }
         },
