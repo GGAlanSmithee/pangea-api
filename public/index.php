@@ -3,10 +3,21 @@
 chdir(dirname(__DIR__));
 error_reporting(E_ALL);
 
-require_once "routes/RoutesLoader.php";
-
 try
 {
+    /**
+     * Autoloader
+     */
+    $loader = new \Phalcon\Loader();
+
+    /**
+     * Register namespaces
+     */
+    $loader->registerNamespaces(array(
+        "Pangea\\Api\\Routes" => "apps/api/Routes",
+    ));
+
+    $loader->register();
 
     /**
      * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
@@ -17,22 +28,7 @@ try
      * Registering a router
      */
     $di->set("router", function() {
-
-        $router = new \Phalcon\Mvc\Router();
-        $router->removeExtraSlashes(true);
-        $router->setDefaultModule("frontend");
-
-        $router->add("/api", array(
-            "module" => "api",
-            "controller" => "index",
-            "action" => "index",
-        ));
-
-        // Route groups
-        $router->mount(new \Pangea\Api\Routes\AccountRoutes());
-        $router->mount(new \Pangea\Api\Routes\TownRoutes());
-        $router->mount(new \Pangea\Api\Routes\RaceRoutes());
-
+        $router = include "app/config/routes.php";
         return $router;
     });
 
