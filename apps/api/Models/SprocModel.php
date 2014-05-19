@@ -4,7 +4,7 @@ namespace Pangea\Api\Models;
 
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
-class SprocModel extends \Phalcon\Mvc\Model
+class SprocModel extends Model
 {
     protected static function call_sproc($sql)
     {

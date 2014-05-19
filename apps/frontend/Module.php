@@ -10,8 +10,7 @@ class Module
         $loader = new \Phalcon\Loader();
 
         $loader->registerNamespaces(array(
-            "Pangea\\Frontend\\Controllers" => __DIR__."/controllers/",
-            "Pangea\\Frontend\\Models" => __DIR__."/models/",
+            "Pangea\\Frontend" => __DIR__."/",
         ));
 
         $loader->register();
