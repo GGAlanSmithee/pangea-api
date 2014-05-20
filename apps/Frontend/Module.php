@@ -2,9 +2,10 @@
 
 namespace Pangea\Frontend;
 
-class Module
-{
+use Phalcon\Mvc\ModuleDefinitionInterface;
 
+class Module implements ModuleDefinitionInterface
+{
     public function registerAutoloaders() {}
 
     public function registerServices($di)

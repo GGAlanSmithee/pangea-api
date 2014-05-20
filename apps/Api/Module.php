@@ -2,19 +2,11 @@
 
 namespace Pangea\Api;
 
-class Module
+use Phalcon\Mvc\ModuleDefinitionInterface;
+
+class Module implements ModuleDefinitionInterface
 {
-
-    public function registerAutoloaders()
-    {
-        $loader = new \Phalcon\Loader();
-
-        $loader->registerNamespaces(array(
-            "Pangea\\Api" => __DIR__."/",
-        ));
-
-        $loader->register();
-    }
+    public function registerAutoloaders() {}
 
     public function registerServices($di)
     {
