@@ -24,6 +24,32 @@ define( function(require) {
         onFormSubmit : function(e) {
             if ($(this.form)[0].checkValidity()) {
                 e.preventDefault();
+
+                $.ajax({
+                    type : "POST",
+                    url : "/api/account/authenticate",
+                    contentType : "application/json; charset=utf-8",
+                    data : JSON.stringify({
+                        "username"   : $(this.form).find(this.username).val(),
+                        "password"   : $(this.form).find(this.password).val()
+                    }),
+                    beforeSend : function (){
+                        // Show wait message in DOM
+                    },
+                    success : function (response) {
+                        console.log(response);
+                        // Show success message in DOM
+                    },
+                    error : function (xhr, status, response) {
+                        console.log(status);
+                        console.log(response);
+                        // Show error message in DOM
+                    },
+                    complete : function (response) {
+                        console.log(response);
+                        // Show complete message in DOM
+                    }
+                });
             } else {
                 _.each($(this.form).find('input'), function(input) {
                     if (!input.checkValidity()) {
