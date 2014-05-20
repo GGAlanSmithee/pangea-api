@@ -10,13 +10,10 @@ try
      */
     $loader = new \Phalcon\Loader();
 
-    /**
-     * Register namespaces
-     */
     $loader->registerNamespaces(array(
-        "Pangea\\Api\\Routes" => "apps/api/Routes",
+        "Pangea" => "apps/",
     ));
-
+    
     $loader->register();
 
     /**

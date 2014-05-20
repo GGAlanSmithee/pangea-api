@@ -2,8 +2,8 @@
 
 $config = new \Phalcon\Config(array(
     "application" => array(
-        "controllersDir" => __DIR__ . "/../../apps/api/Controllers/",
-        "modelsDir"      => __DIR__ . "/../../apps/api/Models/",
+        "controllersDir" => __DIR__ . "/../../apps/Api/Controllers/",
+        "modelsDir"      => __DIR__ . "/../../apps/Api/Models/",
         "baseUri"        => "/"
     )
 ));

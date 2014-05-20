@@ -5,37 +5,22 @@ namespace Pangea\Frontend;
 class Module
 {
 
-    public function registerAutoloaders()
-    {
-        $loader = new \Phalcon\Loader();
-
-        $loader->registerNamespaces(array(
-            "Pangea\\Frontend" => __DIR__."/",
-        ));
-
-        $loader->register();
-    }
+    public function registerAutoloaders() {}
 
     public function registerServices($di)
     {
 
-        /**
-         * Read configuration
-         */
+        // Read configuration
         $config = include __DIR__."/config/config.php";
 
-        /**
-         * Registering a dispatcher
-         */
+        // Registering a dispatcher
         $di->set("dispatcher", function () {
             $dispatcher = new \Phalcon\Mvc\Dispatcher();
             $dispatcher->setDefaultNamespace("Pangea\\Frontend\\Controllers\\");
             return $dispatcher;
         });
 
-        /**
-         * Setting up the view component
-         */
+        // Setting up the view component
         $di->set("view", function() use ($config) {
             $view = new \Phalcon\Mvc\View();
             $view->setViewsDir($config->application->viewsDir);
@@ -45,25 +30,14 @@ class Module
             return $view;
         });
 
-        /**
-         * Database connection is created based in the parameters defined in the configuration file
-         */
-        $di->set("db", function() use ($config) {
-            return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
-                "host" => $config->database->host,
-                "username" => $config->database->username,
-                "password" => $config->database->password,
-                "dbname" => $config->database->name
-            ));
-        });
-
-        /**
-         * If the configuration specify the use of metadata adapter use it or use memory otherwise
-         */
+        // If the configuration specify the use of metadata adapter
+        // use it or use memory otherwise
         $di->set("modelsMetadata", function() use ($config) {
             if (isset($config->models->metadata))
             {
-                $metadataAdapter = "Phalcon\\Mvc\\Model\\Metadata\\".$config->models->metadata->adapter;
+                $metadataAdapter = "Phalcon\\Mvc\\Model\\Metadata\\"
+                                 . $config->models->metadata->adapter;
+
                 return new $metadataAdapter();
             }
             else
@@ -72,9 +46,7 @@ class Module
             }
         });
 
-        /**
-         * Registering a dispatcher
-         */
+        // Registering a dispatcher
         $di->set("dispatcher", function () {
             $eventsManager = new \Phalcon\Events\Manager();
             $eventsManager->attach("dispatch", function($event, $dispatcher, $exception) {
