@@ -2,20 +2,20 @@
 
 namespace Pangea\Api\Models;
 
-class Forum extends Model
+class SpellEffect extends \Phalcon\Mvc\Model
 {
 
     /**
      *
      * @var integer
      */
-    protected $id;
+    protected $spell_id;
 
     /**
      *
      * @var integer
      */
-    protected $clan_id;
+    protected $effect_id;
 
     /**
      *
@@ -24,27 +24,27 @@ class Forum extends Model
     protected $create_time;
 
     /**
-     * Method to set the value of field id
+     * Method to set the value of field spell_id
      *
-     * @param integer $id
+     * @param integer $spell_id
      * @return $this
      */
-    public function setId($id)
+    public function setSpellId($spell_id)
     {
-        $this->id = $id;
+        $this->spell_id = $spell_id;
 
         return $this;
     }
 
     /**
-     * Method to set the value of field clan_id
+     * Method to set the value of field effect_id
      *
-     * @param integer $clan_id
+     * @param integer $effect_id
      * @return $this
      */
-    public function setClanId($clan_id)
+    public function setEffectId($effect_id)
     {
-        $this->clan_id = $clan_id;
+        $this->effect_id = $effect_id;
 
         return $this;
     }
@@ -63,23 +63,23 @@ class Forum extends Model
     }
 
     /**
-     * Returns the value of field id
+     * Returns the value of field spell_id
      *
      * @return integer
      */
-    public function getId()
+    public function getSpellId()
     {
-        return $this->id;
+        return $this->spell_id;
     }
 
     /**
-     * Returns the value of field clan_id
+     * Returns the value of field effect_id
      *
      * @return integer
      */
-    public function getClanId()
+    public function getEffectId()
     {
-        return $this->clan_id;
+        return $this->effect_id;
     }
 
     /**
@@ -94,7 +94,7 @@ class Forum extends Model
 
     public function getSource()
     {
-        return "forum";
+        return "spell_effect";
     }
 
 }

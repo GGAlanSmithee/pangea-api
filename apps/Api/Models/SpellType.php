@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class RelationshipType extends \Phalcon\Mvc\Model
+class SpellType extends Model
 {
 
     /**
@@ -10,6 +10,12 @@ class RelationshipType extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $create_time;
 
     /**
      *
@@ -26,6 +32,19 @@ class RelationshipType extends \Phalcon\Mvc\Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field create_time
+     *
+     * @param string $create_time
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->create_time = $create_time;
 
         return $this;
     }
@@ -54,6 +73,16 @@ class RelationshipType extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->create_time;
+    }
+
+    /**
      * Returns the value of field name
      *
      * @return string
@@ -63,19 +92,9 @@ class RelationshipType extends \Phalcon\Mvc\Model
         return $this->name;
     }
 
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->hasMany("id", "Pangea\Api\Models\ClanRelationship", "relationship_type_id", array("alias" => "ClanRelationship"));
-        $this->hasMany("id", "Pangea\Api\Models\TownRelationship", "relationship_type_id", array("alias" => "TownRelationship"));
-
-    }
-
     public function getSource()
     {
-        return "relationship_type";
+        return "spell_type";
     }
 
 }

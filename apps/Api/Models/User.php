@@ -4,7 +4,7 @@ namespace Pangea\Api\Models;
 
 use Phalcon\Mvc\Model\Validator\Email as Email;
 
-class User extends \Phalcon\Mvc\Model
+class User extends Model
 {
 
     /**
@@ -12,6 +12,12 @@ class User extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $create_time;
 
     /**
      *
@@ -52,6 +58,19 @@ class User extends \Phalcon\Mvc\Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field create_time
+     *
+     * @param string $create_time
+     * @return $this
+     */
+    public function setCreateTime($create_time = null)
+    {
+        $this->create_time = is_null($create_time) ? date("Y-m-d H:i:s") : $create_time;
 
         return $this;
     }
@@ -132,6 +151,16 @@ class User extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->create_time;
+    }
+
+    /**
      * Returns the value of field username
      *
      * @return string
@@ -181,11 +210,9 @@ class User extends \Phalcon\Mvc\Model
         return $this->email;
     }
 
-    /**
-     * Validations and business logic
-     */
     public function validation()
     {
+
         $this->validate(
             new Email(
                 array(
@@ -197,19 +224,6 @@ class User extends \Phalcon\Mvc\Model
         if ($this->validationHasFailed() == true) {
             return false;
         }
-    }
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->hasMany("id", "Pangea\Api\Models\Town", "user_id", array("alias" => "Town"));
-    }
-
-    public function getSource()
-    {
-        return "user";
     }
 
 }

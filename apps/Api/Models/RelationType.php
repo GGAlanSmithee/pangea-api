@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Clan extends Model
+class RelationType extends Model
 {
 
     /**
@@ -10,12 +10,6 @@ class Clan extends Model
      * @var integer
      */
     protected $id;
-
-    /**
-     *
-     * @var integer
-     */
-    protected $region_id;
 
     /**
      *
@@ -38,19 +32,6 @@ class Clan extends Model
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Method to set the value of field region_id
-     *
-     * @param integer $region_id
-     * @return $this
-     */
-    public function setRegionId($region_id)
-    {
-        $this->region_id = $region_id;
 
         return $this;
     }
@@ -92,16 +73,6 @@ class Clan extends Model
     }
 
     /**
-     * Returns the value of field region_id
-     *
-     * @return integer
-     */
-    public function getRegionId()
-    {
-        return $this->region_id;
-    }
-
-    /**
      * Returns the value of field create_time
      *
      * @return string
@@ -123,7 +94,7 @@ class Clan extends Model
 
     public function getSource()
     {
-        return "clan";
+        return "relation_type";
     }
 
 }

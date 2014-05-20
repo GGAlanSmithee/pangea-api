@@ -2,14 +2,8 @@
 
 namespace Pangea\Api\Models;
 
-class Post extends Model
+class TownSpell extends Model
 {
-
-    /**
-     *
-     * @var integer
-     */
-    protected $id;
 
     /**
      *
@@ -21,32 +15,13 @@ class Post extends Model
      *
      * @var integer
      */
-    protected $thread_id;
+    protected $spell_id;
 
     /**
      *
      * @var string
      */
     protected $create_time;
-
-    /**
-     *
-     * @var string
-     */
-    protected $text;
-
-    /**
-     * Method to set the value of field id
-     *
-     * @param integer $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Method to set the value of field town_id
@@ -62,14 +37,14 @@ class Post extends Model
     }
 
     /**
-     * Method to set the value of field thread_id
+     * Method to set the value of field spell_id
      *
-     * @param integer $thread_id
+     * @param integer $spell_id
      * @return $this
      */
-    public function setThreadId($thread_id)
+    public function setSpellId($spell_id)
     {
-        $this->thread_id = $thread_id;
+        $this->spell_id = $spell_id;
 
         return $this;
     }
@@ -88,29 +63,6 @@ class Post extends Model
     }
 
     /**
-     * Method to set the value of field text
-     *
-     * @param string $text
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * Returns the value of field id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Returns the value of field town_id
      *
      * @return integer
@@ -121,13 +73,13 @@ class Post extends Model
     }
 
     /**
-     * Returns the value of field thread_id
+     * Returns the value of field spell_id
      *
      * @return integer
      */
-    public function getThreadId()
+    public function getSpellId()
     {
-        return $this->thread_id;
+        return $this->spell_id;
     }
 
     /**
@@ -140,19 +92,9 @@ class Post extends Model
         return $this->create_time;
     }
 
-    /**
-     * Returns the value of field text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
     public function getSource()
     {
-        return "post";
+        return "town_spell";
     }
 
 }

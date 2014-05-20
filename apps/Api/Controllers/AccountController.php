@@ -99,8 +99,10 @@ class AccountController extends ControllerBase
         // one that shouldn't have access to that
         // account has it.
 
-        return $this->respondWithStatusCode(HttpStatusCode::NOT_IMPLEMENTED,
-            "Unimplemented function!");
+        return $this->respondWithStatusCode(
+            HttpStatusCode::NOT_IMPLEMENTED,
+            "Unimplemented function!"
+        );
     }
 
     /**
@@ -141,6 +143,7 @@ class AccountController extends ControllerBase
 
             $user = User::findFirstByUsername($username);
 
+
             if ($user)
             {
                 // Notify that the username is taken
@@ -155,9 +158,22 @@ class AccountController extends ControllerBase
                 $user->setFirstName($firstName);
                 $user->setLastName($lastName);
                 $user->setEmail($email);
-                $user->save();
+                $user->setCreateTime();
 
-                return $this->respondWithStatusCode(HttpStatusCode::CREATED);
+                if ($user->save() == false)
+                {
+                    $errorMessage = "";
+                    foreach ($user->getMessages() as $message)
+                    {
+                        $errorMessage .= $message . "\n";
+                    }
+
+                    return $this->respondWithStatusCode(HttpStatusCode::CREATED, $errorMessage);
+                }
+                else
+                {
+                    return $this->respondWithStatusCode(HttpStatusCode::CREATED, "User created");
+                }
             }
         }
 

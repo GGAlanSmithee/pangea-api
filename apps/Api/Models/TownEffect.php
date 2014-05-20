@@ -2,20 +2,20 @@
 
 namespace Pangea\Api\Models;
 
-class Clan extends Model
+class TownEffect extends Model
 {
 
     /**
      *
      * @var integer
      */
-    protected $id;
+    protected $town_id;
 
     /**
      *
      * @var integer
      */
-    protected $region_id;
+    protected $effect_id;
 
     /**
      *
@@ -25,32 +25,32 @@ class Clan extends Model
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    protected $name;
+    protected $duration;
 
     /**
-     * Method to set the value of field id
+     * Method to set the value of field town_id
      *
-     * @param integer $id
+     * @param integer $town_id
      * @return $this
      */
-    public function setId($id)
+    public function setTownId($town_id)
     {
-        $this->id = $id;
+        $this->town_id = $town_id;
 
         return $this;
     }
 
     /**
-     * Method to set the value of field region_id
+     * Method to set the value of field effect_id
      *
-     * @param integer $region_id
+     * @param integer $effect_id
      * @return $this
      */
-    public function setRegionId($region_id)
+    public function setEffectId($effect_id)
     {
-        $this->region_id = $region_id;
+        $this->effect_id = $effect_id;
 
         return $this;
     }
@@ -69,36 +69,36 @@ class Clan extends Model
     }
 
     /**
-     * Method to set the value of field name
+     * Method to set the value of field duration
      *
-     * @param string $name
+     * @param integer $duration
      * @return $this
      */
-    public function setName($name)
+    public function setDuration($duration)
     {
-        $this->name = $name;
+        $this->duration = $duration;
 
         return $this;
     }
 
     /**
-     * Returns the value of field id
+     * Returns the value of field town_id
      *
      * @return integer
      */
-    public function getId()
+    public function getTownId()
     {
-        return $this->id;
+        return $this->town_id;
     }
 
     /**
-     * Returns the value of field region_id
+     * Returns the value of field effect_id
      *
      * @return integer
      */
-    public function getRegionId()
+    public function getEffectId()
     {
-        return $this->region_id;
+        return $this->effect_id;
     }
 
     /**
@@ -112,18 +112,18 @@ class Clan extends Model
     }
 
     /**
-     * Returns the value of field name
+     * Returns the value of field duration
      *
-     * @return string
+     * @return integer
      */
-    public function getName()
+    public function getDuration()
     {
-        return $this->name;
+        return $this->duration;
     }
 
     public function getSource()
     {
-        return "clan";
+        return "town_effect";
     }
 
 }

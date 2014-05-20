@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Clan extends Model
+class Spell extends Model
 {
 
     /**
@@ -15,7 +15,7 @@ class Clan extends Model
      *
      * @var integer
      */
-    protected $region_id;
+    protected $spell_type_id;
 
     /**
      *
@@ -43,14 +43,14 @@ class Clan extends Model
     }
 
     /**
-     * Method to set the value of field region_id
+     * Method to set the value of field spell_type_id
      *
-     * @param integer $region_id
+     * @param integer $spell_type_id
      * @return $this
      */
-    public function setRegionId($region_id)
+    public function setSpellTypeId($spell_type_id)
     {
-        $this->region_id = $region_id;
+        $this->spell_type_id = $spell_type_id;
 
         return $this;
     }
@@ -92,13 +92,13 @@ class Clan extends Model
     }
 
     /**
-     * Returns the value of field region_id
+     * Returns the value of field spell_type_id
      *
      * @return integer
      */
-    public function getRegionId()
+    public function getSpellTypeId()
     {
-        return $this->region_id;
+        return $this->spell_type_id;
     }
 
     /**
@@ -123,7 +123,7 @@ class Clan extends Model
 
     public function getSource()
     {
-        return "clan";
+        return "spell";
     }
 
 }

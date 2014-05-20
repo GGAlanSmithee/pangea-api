@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class ClanRelationship extends \Phalcon\Mvc\Model
+class ClanRelation extends Model
 {
 
     /**
@@ -21,7 +21,13 @@ class ClanRelationship extends \Phalcon\Mvc\Model
      *
      * @var integer
      */
-    protected $relationship_type_id;
+    protected $relation_type_id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $create_time;
 
     /**
      *
@@ -56,14 +62,27 @@ class ClanRelationship extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field relationship_type_id
+     * Method to set the value of field relation_type_id
      *
-     * @param integer $relationship_type_id
+     * @param integer $relation_type_id
      * @return $this
      */
-    public function setRelationshipTypeId($relationship_type_id)
+    public function setRelationTypeId($relation_type_id)
     {
-        $this->relationship_type_id = $relationship_type_id;
+        $this->relation_type_id = $relation_type_id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field create_time
+     *
+     * @param string $create_time
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->create_time = $create_time;
 
         return $this;
     }
@@ -102,13 +121,23 @@ class ClanRelationship extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field relationship_type_id
+     * Returns the value of field relation_type_id
      *
      * @return integer
      */
-    public function getRelationshipTypeId()
+    public function getRelationTypeId()
     {
-        return $this->relationship_type_id;
+        return $this->relation_type_id;
+    }
+
+    /**
+     * Returns the value of field create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->create_time;
     }
 
     /**
@@ -121,19 +150,9 @@ class ClanRelationship extends \Phalcon\Mvc\Model
         return $this->percent;
     }
 
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->belongsTo("clan_1_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
-        $this->belongsTo("clan_2_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
-        $this->belongsTo("relationship_type_id", "Pangea\Api\Models\RelationshipType", "id", array("alias" => "RelationshipType"));
-    }
-
     public function getSource()
     {
-        return "clan_relationship";
+        return "clan_relation";
     }
 
 }

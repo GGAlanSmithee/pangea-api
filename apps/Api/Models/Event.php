@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Event extends \Phalcon\Mvc\Model
+class Event extends Model
 {
 
     /**
@@ -19,15 +19,21 @@ class Event extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
+     * @var integer
      */
-    protected $text;
+    protected $instigator_id;
 
     /**
      *
      * @var string
      */
     protected $create_time;
+
+    /**
+     *
+     * @var string
+     */
+    protected $text;
 
     /**
      *
@@ -62,14 +68,14 @@ class Event extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field text
+     * Method to set the value of field instigator_id
      *
-     * @param string $text
+     * @param integer $instigator_id
      * @return $this
      */
-    public function setText($text)
+    public function setInstigatorId($instigator_id)
     {
-        $this->text = $text;
+        $this->instigator_id = $instigator_id;
 
         return $this;
     }
@@ -83,6 +89,19 @@ class Event extends \Phalcon\Mvc\Model
     public function setCreateTime($create_time)
     {
         $this->create_time = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field text
+     *
+     * @param string $text
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
 
         return $this;
     }
@@ -121,13 +140,13 @@ class Event extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field text
+     * Returns the value of field instigator_id
      *
-     * @return string
+     * @return integer
      */
-    public function getText()
+    public function getInstigatorId()
     {
-        return $this->text;
+        return $this->instigator_id;
     }
 
     /**
@@ -141,6 +160,16 @@ class Event extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
      * Returns the value of field is_read
      *
      * @return string
@@ -148,14 +177,6 @@ class Event extends \Phalcon\Mvc\Model
     public function getIsRead()
     {
         return $this->is_read;
-    }
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
     }
 
     public function getSource()

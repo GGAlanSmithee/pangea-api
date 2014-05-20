@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class ScienceType extends Model
+class Region extends Model
 {
 
     /**
@@ -22,6 +22,18 @@ class ScienceType extends Model
      * @var string
      */
     protected $name;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $longitude;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $latitude;
 
     /**
      * Method to set the value of field id
@@ -63,6 +75,32 @@ class ScienceType extends Model
     }
 
     /**
+     * Method to set the value of field longitude
+     *
+     * @param integer $longitude
+     * @return $this
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field latitude
+     *
+     * @param integer $latitude
+     * @return $this
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
      * Returns the value of field id
      *
      * @return integer
@@ -92,9 +130,29 @@ class ScienceType extends Model
         return $this->name;
     }
 
+    /**
+     * Returns the value of field longitude
+     *
+     * @return integer
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Returns the value of field latitude
+     *
+     * @return integer
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
     public function getSource()
     {
-        return "science_type";
+        return "region";
     }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Science extends \Phalcon\Mvc\Model
+class Science extends Model
 {
 
     /**

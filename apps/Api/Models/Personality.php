@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Personality extends \Phalcon\Mvc\Model
+class Personality extends Model
 {
 
     /**
@@ -10,6 +10,12 @@ class Personality extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $create_time;
 
     /**
      *
@@ -26,6 +32,19 @@ class Personality extends \Phalcon\Mvc\Model
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field create_time
+     *
+     * @param string $create_time
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->create_time = $create_time;
 
         return $this;
     }
@@ -54,6 +73,16 @@ class Personality extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->create_time;
+    }
+
+    /**
      * Returns the value of field name
      *
      * @return string
@@ -61,14 +90,6 @@ class Personality extends \Phalcon\Mvc\Model
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->hasMany("id", "Pangea\Api\Models\Town", "personality_id", array("alias" => "Town"));
     }
 
     public function getSource()

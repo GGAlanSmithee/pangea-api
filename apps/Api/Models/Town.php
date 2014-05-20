@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Town extends \Phalcon\Mvc\Model
+class Town extends Model
 {
 
     /**
@@ -34,6 +34,12 @@ class Town extends \Phalcon\Mvc\Model
      * @var integer
      */
     protected $personality_id;
+
+    /**
+     *
+     * @var string
+     */
+    protected $create_time;
 
     /**
      *
@@ -108,6 +114,19 @@ class Town extends \Phalcon\Mvc\Model
     public function setPersonalityId($personality_id)
     {
         $this->personality_id = $personality_id;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field create_time
+     *
+     * @param string $create_time
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->create_time = $create_time;
 
         return $this;
     }
@@ -189,6 +208,16 @@ class Town extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Returns the value of field create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->create_time;
+    }
+
+    /**
      * Returns the value of field name
      *
      * @return string
@@ -208,40 +237,9 @@ class Town extends \Phalcon\Mvc\Model
         return $this->ruler_name;
     }
 
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-          $this->hasMany("id", "Pangea\Api\Models\Building", "town_id", array("alias" => "Building"));
-          $this->hasMany("id", "Pangea\Api\Models\Event", "town_id", array("alias" => "Event"));
-          $this->hasMany("id", "Pangea\Api\Models\Post", "town_id", array("alias" => "Post"));
-          $this->hasMany("id", "Pangea\Api\Models\Science", "town_id", array("alias" => "Science"));
-          $this->hasMany("id", "Pangea\Api\Models\Thread", "town_id", array("alias"=>"Thread"));
-          $this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_1_id", array("alias" => "TownRelationship"));
-          $this->hasMany("id", "Pangea\Api\Models\TownRelationship", "town_2_id", array("alias" => "TownRelationship"));
-          $this->hasMany("id", "Pangea\Api\Models\Unit", "town_id", array("alias" => "Unit"));
-          $this->belongsTo("clan_id", "Pangea\Api\Models\Clan", "id", array("alias" => "Clan"));
-          $this->belongsTo("personality_id", "Pangea\Api\Models\Personality", "id", array("alias" => "Personality"));
-          $this->belongsTo("race_id", "Pangea\Api\Models\Race", "id", array("alias" => "Race"));
-          $this->belongsTo("user_id", "Pangea\Api\Models\User", "id", array("alias" => "User"));
-    }
-
     public function getSource()
     {
         return "town";
     }
 
-    public function toStdClass()
-    {
-      $object = new \stdClass;
-      $object->id = $this->getId();
-      $object->name = $this->getName();
-      $object->ruler = $this->getRulerName();
-      $object->race = $this->race->getName();
-      $object->personality = $this->personality->getName();
-      $object->clan = $this->clan->getName();
-
-      return $object;
-    }
 }

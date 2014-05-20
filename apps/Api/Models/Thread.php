@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Thread extends \Phalcon\Mvc\Model
+class Thread extends Model
 {
 
     /**
@@ -27,13 +27,13 @@ class Thread extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    protected $title;
+    protected $create_time;
 
     /**
      *
      * @var string
      */
-    protected $create_time;
+    protected $title;
 
     /**
      * Method to set the value of field id
@@ -75,19 +75,6 @@ class Thread extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Method to set the value of field title
-     *
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
      * Method to set the value of field create_time
      *
      * @param string $create_time
@@ -96,6 +83,19 @@ class Thread extends \Phalcon\Mvc\Model
     public function setCreateTime($create_time)
     {
         $this->create_time = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Method to set the value of field title
+     *
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }
@@ -131,16 +131,6 @@ class Thread extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Returns the value of field title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
      * Returns the value of field create_time
      *
      * @return string
@@ -151,13 +141,13 @@ class Thread extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Initialize method for model.
+     * Returns the value of field title
+     *
+     * @return string
      */
-    public function initialize()
+    public function getTitle()
     {
-        $this->hasMany("id", "Pangea\Api\Models\Post", "thread_id", array("alias" => "Post"));
-        $this->belongsTo("forum_id", "Pangea\Api\Models\Forum", "id", array("alias" => "Forum"));
-        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
+        return $this->title;
     }
 
     public function getSource()

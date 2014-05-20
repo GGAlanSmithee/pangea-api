@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Unit extends SprocModel
+class Unit extends Model
 {
 
     /**
@@ -150,31 +150,9 @@ class Unit extends SprocModel
         return $this->construction_time;
     }
 
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
-        $this->belongsTo("unit_type_id", "Pangea\Api\Models\UnitType", "id", array("alias" => "UnitType"));
-    }
-
     public function getSource()
     {
         return "unit";
-    }
-
-    /**
-     * Stored procedures
-     */
-    public static function get_town_units($town_id)
-    {
-      return Unit::call_sproc("CALL get_town_units('$town_id');");
-    }
-
-    public static function get_town_unit($town_id, $unit_type_id)
-    {
-      return Unit::call_sproc("CALL get_town_unit('$town_id', '$unit_type_id');");
     }
 
 }

@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Building extends SprocModel
+class Building extends Model
 {
 
     /**
@@ -150,30 +150,9 @@ class Building extends SprocModel
         return $this->construction_time;
     }
 
-    /**
-     * Initialize method for model.
-     */
-    public function initialize()
-    {
-        $this->belongsTo("building_type_id", "Pangea\Api\Models\BuildingType", "id", array("alias" => "BuildingType"));
-        $this->belongsTo("town_id", "Pangea\Api\Models\Town", "id", array("alias" => "Town"));
-    }
-
     public function getSource()
     {
         return "building";
     }
 
-    /**
-     * Stored procedures
-     */
-    public static function get_town_buildings($town_id)
-    {
-        return Building::call_sproc("CALL get_town_buildings('$town_id');");
-    }
-
-    public static function get_town_building($town_id, $building_type_id)
-    {
-        return Building::call_sproc("CALL get_town_building('$town_id', '$building_type_id');");
-    }
 }
