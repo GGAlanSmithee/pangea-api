@@ -6,6 +6,7 @@ use Pangea\Api\Models\Town;
 use Pangea\Api\Models\Building;
 use Pangea\Api\Models\Unit;
 use Pangea\Api\Models\Science;
+use Pangea\Api\Web\HttpStatusCode;
 
 class TownController extends ControllerBase
 {
@@ -17,7 +18,10 @@ class TownController extends ControllerBase
     public function detailsAction($id)
     {
         $town = Town::findFirst($id);
-        return $town == null ? $this->emptyJsonResponse() : $this->jsonResponse($town->toArray());
+        return $town == null
+            ? $this->respondWithStatusCode(HttpStatusCode::NOT_FOUND,
+                "Town not found.")
+            : $this->jsonResponse($town->toArray());
     }
 
     public function deleteAction($id)
@@ -148,4 +152,3 @@ class TownController extends ControllerBase
         );
     }
 }
-

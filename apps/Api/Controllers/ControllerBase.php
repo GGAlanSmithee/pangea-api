@@ -2,8 +2,23 @@
 
 namespace Pangea\Api\Controllers;
 
+use Pangea\Api\Web\HttpStatusCode;
+
 class ControllerBase extends \Phalcon\Mvc\Controller
 {
+    protected function clientAcceptsJson()
+    {
+        foreach ($this->request->getAcceptableContent() as $contentType)
+        {
+            if ($contentType["accept"] == "application/json")
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     protected function forward($uri)
     {
         $uriParts = explode("/", $uri);
@@ -18,8 +33,7 @@ class ControllerBase extends \Phalcon\Mvc\Controller
 
     protected function getJsonRequest()
     {
-        $data = $this->request->getRawBody();
-        return json_decode($data);
+        return $this->request->getJsonRawBody();
     }
 
     protected function imageResponse(\Phalcon\Image\Adapter $image)
@@ -38,11 +52,10 @@ class ControllerBase extends \Phalcon\Mvc\Controller
         $this->view->disable();
 
         $response = new \Phalcon\Http\Response();
-        $response->setContentType("application/json", "UTF-8");
-        $response->setContent(json_encode($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
+        $response->setContentType("application/json", "utf-8");
+        $response->setJsonContent($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
 
         return $response;
-
     }
 
     protected function emptyJsonResponse()
@@ -50,38 +63,20 @@ class ControllerBase extends \Phalcon\Mvc\Controller
       return $this->jsonResponse(array());
     }
 
-    protected function respondWithStatusCode($code = 200, $message = null)
+    protected function respondWithStatusCode($code = HttpStatusCode::OK, $message = null)
     {
-        $statusCodeMessages = array(
-            200 => "OK",
-            201 => "Created",
-            202 => "Accepted",
-            301 => "Moved Permanently",
-            302 => "Found",
-            303 => "See Other",
-            304 => "Not Modified",
-            400 => "Bad Request",
-            401 => "Unauthorized",
-            403 => "Forbidden",
-            404 => "Not Found",
-            409 => "Conflict",
-            500 => "Internal Server Error",
-            501 => "Not Implemented",
-            503 => "Service Unavailable",
-        );
-
         $this->view->disable();
 
         $response = new \Phalcon\Http\Response();
-        $response->setStatusCode($code, $statusCodeMessages[$code]);
+        $response->setStatusCode($code, HttpStatusCode::getMessage($code));
 
-        if ($this->request->isAjax())
+        if ($this->request->isAjax() || $this->clientAcceptsJson())
         {
             $data = new \stdClass();
             $data->message = $message;
 
-            $response->setContentType("application/json", "UTF-8");
-            $response->setJsonContent($data, JSON_PRETTY_PRINT);
+            $response->setContentType("application/json", "utf-8");
+            $response->setJsonContent($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
         }
         else
         {

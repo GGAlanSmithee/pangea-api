@@ -2,7 +2,8 @@
 
 namespace Pangea\Api\Controllers;
 
-use Pangea\Api\Models\User;
+use Pangea\Api\Models\User,
+    Pangea\Api\Web\HttpStatusCode;
 
 class AccountController extends ControllerBase
 {
@@ -52,7 +53,7 @@ class AccountController extends ControllerBase
             $message = "Wrong username or password.";
         }
 
-        return $this->respondWithStatusCode(401, message);
+        return $this->respondWithStatusCode(HttpStatusCode::UNAUTHORIZED, message);
     }
 
     /**
@@ -98,7 +99,8 @@ class AccountController extends ControllerBase
         // one that shouldn't have access to that
         // account has it.
 
-        return $this->respondWithStatusCode(501, "Unimplemented function!");
+        return $this->respondWithStatusCode(HttpStatusCode::NOT_IMPLEMENTED,
+            "Unimplemented function!");
     }
 
     /**
@@ -142,7 +144,8 @@ class AccountController extends ControllerBase
             if ($user)
             {
                 // Notify that the username is taken
-                return $this->respondWithStatusCode(404, "The username is already in use.");
+                return $this->respondWithStatusCode(HttpStatusCode::NOT_FOUND,
+                    "The username is already in use.");
             }
             else
             {
@@ -154,10 +157,10 @@ class AccountController extends ControllerBase
                 $user->setEmail($email);
                 $user->save();
 
-                return $this->respondWithStatusCode(201);
+                return $this->respondWithStatusCode(HttpStatusCode::CREATED);
             }
         }
 
-        return $this->respondWithStatusCode(404);
+        return $this->respondWithStatusCode(HttpStatusCode::NOT_FOUND);
     }
 }
