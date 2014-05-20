@@ -1,58 +1,58 @@
 {
-  "name": "Pangea",
-  "repository": {
-    "type": "git",
-    "url": "git@bitbucket.org:ggnore/pangea.git"
-  },
-  "devDependencies": {
-    "grunt": "latest",
-    "matchdep": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-browser-dependencies": "latest"
-  },
-  "browserDependencies": {
-    "options": {},
-    "backbone": {
-        "dir": "public/js/lib/backbone",
-        "files": [{
-            "Backbone.js": "http://backbonejs.org/backbone-min.js"
-        },{
-            "Backbone.map": "http://backbonejs.org/backbone-min.map"
-        }]
+    "name": "Pangea",
+    "repository": {
+        "type": "git",
+        "url": "git@bitbucket.org:ggnore/pangea.git"
     },
-    "handlebars": {
-        "dir": "public/js/lib/handlebars",
-        "files": [{
-            "Handlebars.js": "http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"
-        }]
+    "devDependencies": {
+        "grunt": "latest",
+        "matchdep": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-browser-dependencies": "latest"
     },
-    "jquery": {
-      "dir": "public/js/lib/jquery",
-      "files": [{
-        "JQuery.js": "http://code.jquery.com/jquery-2.1.0.min.js"
-      },{
-        "JQuery.map": "http://code.jquery.com/jquery-2.1.1.min.map"
-      }]
-    },
-    "requirejs": {
-      "dir": "public/js/lib/require",
-      "files": [{
-        "Require.js": "http://requirejs.org/docs/release/2.1.11/minified/require.js"
-      },{
-        "Text.js": "https://raw.github.com/requirejs/text/latest/text.js"
-      },{
-        "DomReady.js": "https://raw.github.com/requirejs/domReady/latest/domReady.js"
-      }]
-    },
-    "underscore": {
-        "dir": "public/js/lib/underscore",
-        "files": [{
-            "Underscore.js": "http://underscorejs.org/underscore-min.js"
-        },{
-            "Underscore.map": "http://underscorejs.org/underscore-min.map"
-        }]
+    "browserDependencies": {
+        "options": {},
+        "backbone": {
+            "dir": "public/js/lib/backbone",
+            "files": [{
+                "Backbone.js": "http://backbonejs.org/backbone-min.js"
+            },{
+                "Backbone.map": "http://backbonejs.org/backbone-min.map"
+            }]
+        },
+        "handlebars": {
+            "dir": "public/js/lib/handlebars",
+            "files": [{
+                "Handlebars.js": "http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"
+            }]
+        },
+        "jquery": {
+            "dir": "public/js/lib/jquery",
+            "files": [{
+                "JQuery.js": "http://code.jquery.com/jquery-2.1.0.min.js"
+            },{
+                "JQuery.map": "http://code.jquery.com/jquery-2.1.1.min.map"
+            }]
+        },
+        "requirejs": {
+            "dir": "public/js/lib/require",
+            "files": [{
+                "Require.js": "http://requirejs.org/docs/release/2.1.11/minified/require.js"
+            },{
+                "Text.js": "https://raw.github.com/requirejs/text/latest/text.js"
+            },{
+                "DomReady.js": "https://raw.github.com/requirejs/domReady/latest/domReady.js"
+            }]
+        },
+        "underscore": {
+            "dir": "public/js/lib/underscore",
+            "files": [{
+                "Underscore.js": "http://underscorejs.org/underscore-min.js"
+            },{
+                "Underscore.map": "http://underscorejs.org/underscore-min.map"
+            }]
+        }
     }
-  }
 }

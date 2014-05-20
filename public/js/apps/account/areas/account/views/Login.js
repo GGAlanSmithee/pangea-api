@@ -48,11 +48,11 @@ define( function(require) {
         handleInputValidation : function(input) {
             var validationMessage =
                 input.id == "username" ? (
-                input.validity.valueMissing ? "Enter username." :
+                input.validity.valueMissing ? "Enter username" :
                 input.validity.patternMismatch ? "Must be five characters long" :
                 ""
             ) : input.id == "password" ? (
-                input.validity.valueMissing ? "Enter password." :
+                input.validity.valueMissing ? "Enter password" :
                 input.validity.patternMismatch ? "Must be eight characters long" :
                 ""
             ) : "";

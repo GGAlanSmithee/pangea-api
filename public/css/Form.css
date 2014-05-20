@@ -22,3 +22,16 @@ input.dirty:invalid::-moz-placeholder {
 input.dirty:invalid:-ms-input-placeholder {
     color:#000;
 }
+
+div.growlUI {
+    text-align:center;
+}
+div.growlUI h1, div.growlUI h2 {
+    color: white; padding: 5px 5px 5px 75px; text-align: left
+}
+div.growlUI h1 {
+    font-size:24px;
+}
+div.growlUI h2 {
+    font-size:18px;
+}

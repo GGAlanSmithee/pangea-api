@@ -2,7 +2,7 @@
 
 namespace Pangea\Api\Models;
 
-class Model extends Model
+class Model extends \Phalcon\Mvc\Model
 {
 
 }

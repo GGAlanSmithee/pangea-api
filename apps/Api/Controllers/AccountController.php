@@ -147,33 +147,35 @@ class AccountController extends ControllerBase
             if ($user)
             {
                 // Notify that the username is taken
-                return $this->respondWithStatusCode(HttpStatusCode::NOT_FOUND,
-                    "The username is already in use.");
+                return $this->respondWithStatusCode(
+                    HttpStatusCode::NOT_FOUND,
+                    "The username is already in use."
+                );
             }
             else
             {
-                $user = new User();
-                $user->setUsername($username);
-                $user->setPassword($this->security->hash($password));
-                $user->setFirstName($firstName);
-                $user->setLastName($lastName);
-                $user->setEmail($email);
-                $user->setCreateTime();
+                    $user = new User();
+                    $user->setUsername($username);
+                    $user->setPassword($this->security->hash($password));
+                    $user->setFirstName($firstName);
+                    $user->setLastName($lastName);
+                    $user->setEmail($email);
+                    $user->setCreateTime();
 
-                if ($user->save() == false)
-                {
-                    $errorMessage = "";
-                    foreach ($user->getMessages() as $message)
+                    if ($user->save() == false)
                     {
-                        $errorMessage .= $message . "\n";
-                    }
+                        $errorMessage = "";
+                        foreach ($user->getMessages() as $message)
+                        {
+                            $errorMessage .= $message . "\n";
+                        }
 
-                    return $this->respondWithStatusCode(HttpStatusCode::CREATED, $errorMessage);
-                }
-                else
-                {
-                    return $this->respondWithStatusCode(HttpStatusCode::CREATED, "User created");
-                }
+                        return $this->respondWithStatusCode(HttpStatusCode::CREATED, $errorMessage);
+                    }
+                    else
+                    {
+                        return $this->respondWithStatusCode(HttpStatusCode::CREATED, "User created");
+                    }
             }
         }
 

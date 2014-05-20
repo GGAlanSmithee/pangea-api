@@ -11,6 +11,7 @@ require.config({
 
         // Libs
         JQuery       : "../lib/jquery/JQuery",
+        BlockUI      : "../lib/jquery/BlockUI",
         Underscore   : "../lib/underscore/Underscore",
         "BB-raw"     : "../lib/backbone/Backbone",
         Backbone     : "../lib/backbone/BackboneModule",
@@ -25,6 +26,10 @@ require.config({
         },
         JQuery : {
             exports : "$"
+        },
+        BlockUI : {
+            deps : ["JQuery"],
+            exports : "BlockUI"
         },
         Underscore : {
             exports : "_"
