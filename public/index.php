@@ -13,7 +13,7 @@ try
     $loader->registerNamespaces(array(
         "Pangea" => "apps/",
     ));
-    
+
     $loader->register();
 
     /**
@@ -60,11 +60,11 @@ try
     $application->registerModules(array(
         "frontend" => array(
             "className" => "Pangea\\Frontend\\Module",
-            "path" => "apps/frontend/Module.php"
+            "path" => "apps/Frontend/Module.php"
         ),
         "api" => array(
             "className" => "Pangea\\Api\\Module",
-            "path" => "apps/api/Module.php"
+            "path" => "apps/Api/Module.php"
         )
     ));
 
