@@ -1,16 +1,57 @@
-# Aptana
+# General
+*.tmp
+*.bak
+*.swp
+*~
+
+# Eclipse
 .project
-.settings
+.metadata
+.settings/
+*.launch
+.buildpath
+*.pydevproject
+
+# JetBrains
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Netbeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # Composer
 vendor/
 composer.phar
 composer.lock
-
-# Node / Grunt
-node_modules/
-npm-debug.log
-.sass-cache
 
 # Phalcon
 .phalcon

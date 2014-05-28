@@ -6,7 +6,7 @@ read -p "Username : " username
 read -p "Password : " password
 read -p "Schema   : " dbname
 
-cat <<EOF > "apps/Api/config/dbconfig.php"
+cat <<EOF > "app/config/dbconfig.php"
 <?php
 
 return new \Phalcon\Config(array(
@@ -20,7 +20,5 @@ return new \Phalcon\Config(array(
 ));
 
 EOF
-
-cp apps/Api/config/dbconfig.php app/config/dbconfig.php
 
 echo "Done!"
