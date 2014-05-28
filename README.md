@@ -11,19 +11,9 @@ No tab
 ```
 
 ## Naming Convenctions ##
-
-##### Folders #####
-###### All lowercase letters, with the correct subject-verb agreement ######
-- app
-    - views
-        - nav
-        - main
-    - lib
-        - jquery
-
 ##### Files #####
 ###### CamelCase, starting with a Capital letter ######
-MainView.js
+MainModel.php
 
 ##### Config files #####
 ###### All lowercase letters ######
@@ -51,16 +41,9 @@ functionName(var variable)
 
 ###### There should be a white space between the if and the statement header ######
 ###### PHP: Codeblock starts on the line below the if-statement ######
-###### JavaScript: Codeblock starts on the same line as the if-statement ######
 ```php
 if (true)
 {
     // PHP
-}
-```
-
-```javascript
-if (true) {
-    // JavaScript
 }
 ```
